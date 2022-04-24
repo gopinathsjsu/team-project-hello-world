@@ -5,7 +5,7 @@ from typing import List
 
 class AbstractHotel(ABC):
     @abstractmethod
-    def getAvailibilityOn(start,end) -> int:
+    def getAvailibilityOn(start,end) -> List[AbstractRoom]:
         pass
     
     @abstractmethod
