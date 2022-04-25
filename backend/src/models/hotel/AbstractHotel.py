@@ -1,4 +1,4 @@
-from room.AbstractRoom import AbstractRoom
+from src.models.room.AbstractRoom import AbstractRoom
 from abc import ABC, abstractmethod
 from typing import List
 
