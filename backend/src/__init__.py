@@ -5,11 +5,11 @@ from dotenv import dotenv_values
 app = Flask(__name__)
 app.app_context().push()
 config = dotenv_values(".env")
-
+app.config["SQLALCHEMY_DATABASE_URI"]=config["CONN"]
+app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+    
 class db:
     #print(config["CONN"])
-    app.config["SQLALCHEMY_DATABASE_URI"]=config["CONN"]
-    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     datab = SQLAlchemy(app)
 
     def get_instance():

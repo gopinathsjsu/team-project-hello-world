@@ -8,6 +8,7 @@ flask = "*"
 flask-sqlalchemy = "*"
 cloud-sql-python-connector = {extras = ["pymysql"], version = "*"}
 python-dotenv = "*"
+psycopg2-binary = "*"
 
 [dev-packages]
 

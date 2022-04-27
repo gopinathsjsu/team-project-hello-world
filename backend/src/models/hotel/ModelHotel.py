@@ -4,7 +4,7 @@ from typing import List
 from src import db
 
 database = db.get_instance()
-class ModelHotel(database):
-    id = db.Column(db.Integer, primary_key=True)
+class ModelHotel(database.Model):
+    id = database.Column(database.Integer, primary_key=True)
     def __repr__(self):
         return '<User %r>' % self.username
