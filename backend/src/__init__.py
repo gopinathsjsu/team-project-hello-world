@@ -3,6 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 from dotenv import dotenv_values
 
 app = Flask(__name__)
+
 app.app_context().push()
 config = dotenv_values(".env")
 app.config["SQLALCHEMY_DATABASE_URI"]=config["CONN"]
@@ -16,6 +17,9 @@ class db:
         return db.datab
 
 db.get_instance().create_all()
+
 from src.models.hotel.ModelHotel import ModelHotel
+# import src.models.user.ModerUser
+
 if __name__ == "__main__":
 	print("Hello World")
