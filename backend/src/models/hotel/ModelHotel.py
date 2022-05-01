@@ -9,7 +9,10 @@ database = db.get_instance()
 class ModelHotel(AbstractHotel):
     __tablename__ = "hotel"
     
-    
+    def __init__(self,id,room) -> None:
+        self.id = id
+        self.rooms = room
+        
     id = database.Column(database.Integer, primary_key=True)
     rooms = database.relationship('room', backref='hotel', lazy=True)
 
