@@ -14,8 +14,8 @@ class db:
 
     def get_instance():
         return db.datab
+from src.models.hotel.ModelHotel import ModelHotel
 
 db.get_instance().create_all()
-from src.models.hotel.ModelHotel import ModelHotel
 if __name__ == "__main__":
 	print("Hello World")

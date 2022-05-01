@@ -1,9 +1,13 @@
 from src.models.room.AbstractRoom import AbstractRoom
-from abc import ABC, abstractmethod
+from abc import ABCMeta,ABC, abstractmethod
 from typing import List
+from src import db
+
+database = db.get_instance()
 
 
-class AbstractHotel(ABC):
+class AbstractHotel(database.Model):
+    __abstract__ = True
     @abstractmethod
     def getAvailibilityOn(start,end) -> List[AbstractRoom]:
         pass
