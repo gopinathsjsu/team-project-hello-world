@@ -3,7 +3,7 @@ from src.models.room.AbstractRoom import AbstractRoom
 
 
 class TestRoom(AbstractRoom):
-        def isAvailableFor(start,end):
+        def isAvailableFor(self,start,end):
             return True
         def  getPrice():
             pass

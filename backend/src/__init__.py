@@ -18,12 +18,12 @@ class db:
         return db.datab
 
 from src.models.hotel.ModelHotel import ModelHotel
+from src.models.hotel.ModelHotel import ModelHotel
 
 import src.tests
 
 src.tests.hotel_test()
 
-db.get_instance().create_all()
 
 if __name__ == "__main__":
 	print("Hello World")
