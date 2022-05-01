@@ -1,3 +1,4 @@
+from cgi import test
 from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import dotenv_values
@@ -15,8 +16,12 @@ class db:
 
     def get_instance():
         return db.datab
+
 from src.models.hotel.ModelHotel import ModelHotel
 
+import src.tests
+
+src.tests.hotel_test()
 
 db.get_instance().create_all()
 

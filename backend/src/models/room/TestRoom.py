@@ -1,10 +1,10 @@
 
-from models.room.AbstractRoom import AbstractRoom
+from src.models.room.AbstractRoom import AbstractRoom
 
 
 class TestRoom(AbstractRoom):
         def isAvailableFor(start,end):
-            pass
+            return True
         def  getPrice():
             pass
         def bookFor(start,end):
