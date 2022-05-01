@@ -13,10 +13,3 @@ class TestHotel(AbstractHotel):
     def __init__(self,id,room) -> None:
         self.id = id
         self.rooms.append(room)
-
-    def getAvailibilityOn(self,start: date,end:date) -> List[AbstractRoom]:
-        available_rooms = []
-        for r in self.rooms:
-            if  r.isAvailableFor(start,end):
-                available_rooms.append(r)
-        return available_rooms
