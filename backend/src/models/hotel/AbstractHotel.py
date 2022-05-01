@@ -1,4 +1,6 @@
 from src.models.room.AbstractRoom import AbstractRoom
+from src.models.booking.AbstractBooking import AbstractBooking
+
 from abc import ABCMeta,ABC, abstractmethod
 from typing import List
 from src import db
@@ -21,6 +23,6 @@ class AbstractHotel(database.Model):
         pass
 
     @abstractmethod
-    def book(AbstractRoom: AbstractRoom,start,end):
+    def book(room: AbstractRoom,start,end):
         pass
-      
+        
