@@ -16,12 +16,7 @@ class ModelHotel(AbstractHotel):
     id = database.Column(database.Integer, primary_key=True)
     rooms = database.relationship('room', backref='hotel', lazy=True)
 
-    def getAvailibilityOn(self,start: date,end:date) -> List[AbstractRoom]:
-        available_rooms = []
-        for r in self.rooms:
-            if  r.isAvailableFor(start,end):
-                available_rooms.append(r)
-        return available_rooms
+    
 
 
     
