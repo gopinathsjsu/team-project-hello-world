@@ -1,9 +1,9 @@
 from  src.models.hotel.AbstractHotel import AbstractHotel
 from src.models.room.AbstractRoom import AbstractRoom
-
 from abc import ABC, abstractmethod
 from typing import List
 from src import db
+from datetime import date
 
 database = db.get_instance()
 class ModelHotel(AbstractHotel):
@@ -11,10 +11,16 @@ class ModelHotel(AbstractHotel):
     
     
     id = database.Column(database.Integer, primary_key=True)
-    rooms = db.relationship('room', backref='hotel', lazy=True)
+    rooms = database.relationship('room', backref='hotel', lazy=True)
 
-    def getAvailibilityOn(start,end) -> List[AbstractRoom]:
-        pass
+    def getAvailibilityOn(self,start: date,end:date) -> List[AbstractRoom]:
+        available_rooms = []
+        for r in self.rooms:
+            if  r.isAvailableFor(start,end):
+                available_rooms.append(r)
+        return available_rooms
+
+
     
     def getPrice(room: AbstractRoom,start,end,Amenities) -> float:
         pass

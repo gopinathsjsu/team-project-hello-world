@@ -17,10 +17,8 @@ class db:
         return db.datab
 from src.models.hotel.ModelHotel import ModelHotel
 
-db.get_instance().create_all()
 
-from src.models.hotel.ModelHotel import ModelHotel
-# import src.models.user.ModerUser
+db.get_instance().create_all()
 
 if __name__ == "__main__":
 	print("Hello World")
