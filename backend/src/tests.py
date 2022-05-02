@@ -22,11 +22,9 @@ def hotel_test():
     date2 = datetime.now() + timedelta(days=2)
 
 
-    breakfast = Amenities()
-    breakfast.price = 20
-    fitness = Amenities()
-    breakfast.next_chain = fitness
-    fitness.price = 30
+    breakfast = Amenities(20,Amenities(30))
+    
+    
     print(s.getAvailibilityOn(date,date2))
     print(s.getPrice(room,date,date2,extra=breakfast))
     

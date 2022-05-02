@@ -11,6 +11,12 @@ database = db.get_instance()
 class Amenities:
     next_chain = None
     price = 0
+    def __init__(self,price: float, next_chain=None) -> None:
+        self.price = price
+        self.next_chain = next_chain
+        
+    
+
     def get_price(self)-> float:
         return self.get_self_price() + self.get_next_price()
 
