@@ -1,5 +1,6 @@
-from datetime import date, datetime
+from datetime import date, datetime, timedelta
 from src import db
+from src.models.hotel.AbstractHotel import Amenities
 from src.models.hotel.TestHotel import TestHotel
 from src.models.room.TestRoom import TestRoom
 
@@ -8,7 +9,7 @@ database = db.get_instance()
 database.create_all()
 
 def hotel_test():
-
+    print("Running tests for hotel")
     room = TestRoom()
     s = TestHotel(1,room)
     s.rooms.append(TestRoom())
@@ -18,8 +19,15 @@ def hotel_test():
     #print(s)
     date = datetime.now()
     
-    date2 = datetime.now()
+    date2 = datetime.now() + timedelta(days=2)
 
+
+    breakfast = Amenities()
+    breakfast.price = 20
+    fitness = Amenities()
+    breakfast.next_chain = fitness
+    fitness.price = 30
     print(s.getAvailibilityOn(date,date2))
+    print(s.getPrice(room,date,date2,extra=breakfast))
     
 
