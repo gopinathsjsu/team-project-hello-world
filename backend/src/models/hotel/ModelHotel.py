@@ -13,7 +13,7 @@ class ModelHotel(AbstractHotel):
         self.rooms = room
         
     id = database.Column(database.Integer, primary_key=True)
-    rooms = database.relationship('room', backref='hotel', lazy=True)
+    rooms = database.relationship('ModelRoom', backref='hotel', lazy=True)
 
     
 
