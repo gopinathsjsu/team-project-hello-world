@@ -8,7 +8,7 @@ class AbstractRoom(ABC):
         pass
     
     @abstractmethod
-    def  getPrice():
+    def  getPrice(self):
         pass
 
     @abstractmethod 
