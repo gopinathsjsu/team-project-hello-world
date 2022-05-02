@@ -2,10 +2,9 @@ from  src.models.hotel.AbstractHotel import AbstractHotel
 from src.models.room.AbstractRoom import AbstractRoom
 from abc import ABC, abstractmethod
 from typing import List
-from src import db
+from src.db import db as database
 from datetime import date
 
-database = db.get_instance()
 class ModelHotel(AbstractHotel):
     __tablename__ = "hotel"
     

@@ -3,10 +3,9 @@ from src.models.booking.AbstractBooking import AbstractBooking
 
 from abc import ABCMeta,ABC, abstractmethod
 from typing import List
-from src import db
+from src.db import db as database
 from datetime import date, datetime, timedelta
 
-database = db.get_instance()
 
 class Amenities:
     next_chain = None

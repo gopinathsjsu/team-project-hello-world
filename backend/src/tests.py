@@ -1,11 +1,10 @@
 from datetime import date, datetime, timedelta
-from src import db
+from src.db import db as database
 from src.models.hotel.AbstractHotel import Amenities
 from src.models.hotel.TestHotel import TestHotel
 from src.models.room.TestRoom import TestRoom
 
 from src.models.room.TestRoom import TestRoom
-database = db.get_instance()
 database.create_all()
 
 def hotel_test():

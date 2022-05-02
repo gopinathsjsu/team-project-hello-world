@@ -1,11 +1,10 @@
 
 from abc import ABCMeta,ABC, abstractmethod
 from typing import List
-from src import db
+from src.db import db as database
 from src.models.user.AbtractUser import AbstractUser
 from src.models.room.AbstractRoom import AbstractRoom
 
-database = db.get_instance()
 
 class AbstractBooking(database.Model):
     __abstract__ = True
