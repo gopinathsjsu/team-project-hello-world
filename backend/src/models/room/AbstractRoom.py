@@ -1,8 +1,9 @@
 from abc import ABC, abstractmethod
+from src.db import db
 
 
-class AbstractRoom(ABC):
-
+class AbstractRoom(db.Model):
+    __abstract__ = True
     @abstractmethod
     def isAvailableFor(start,end):
         pass
