@@ -14,10 +14,6 @@ class ModelHotel(AbstractHotel):
         
     id = database.Column(database.Integer, primary_key=True)
     rooms = database.relationship('ModelRoom', backref='hotel', lazy=True)
-
-    
-
-
     
     def getPrice(room: AbstractRoom,start,end,Amenities) -> float:
         pass
