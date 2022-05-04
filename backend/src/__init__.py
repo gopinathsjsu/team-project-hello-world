@@ -3,7 +3,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import dotenv_values
 from src.routes.hotelRoutes import hotel
-from src.models.user.ModerUser import ModelUser
+from src.models.user.ModelUser import ModelUser
 
 app = Flask(__name__)
 
