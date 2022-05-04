@@ -43,6 +43,9 @@ Every Friday
 ## Work Distribution
 
 Jayem : Frontend and Backend
+
 Pratyush : Frontend and Backend
+
 Ishan : 
+
 Prithvi : 
