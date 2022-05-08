@@ -14,7 +14,7 @@
 
 ## Tools and Languages:
 
-Frontend - React
+Frontend - React JS
 
 Backend - Python - Flask
 
