@@ -31,7 +31,7 @@ Pratyush Sharma
 
 Ishan Malkan
 
-Prithvi 
+Prithvi Raj
 
 
 ## Scrum meetings schedule:
@@ -52,4 +52,4 @@ Pratyush : Frontend and Backend
 
 Ishan : 
 
-Prithvi : 
+Prithvi : Backend, Integration, Documentation
