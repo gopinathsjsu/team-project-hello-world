@@ -13,12 +13,12 @@ const SeatSelection = () => {
 
   const [details, setDetails] = useState();
   const [userDetails, setUserDetails] = useState();
-  const [travellers, setPassengers] = useState();
+  const [rooms, setRooms] = useState();
   const [showSeatSelection, setShowSeatSelection] = useState(false);
   const [rows, setRows] = useState([]);
-  const [seatsSelected, setSeatsSelected] = useState([]);
+  const [roomsSelected, setRoomsSelected] = useState([]);
   const [loyaltyPoints, setLoyaltyPoints] = useState(0);
-  const travellersTracker = [];
+  const userTracker = [];
   const [creditCard, setCreditCard] = useState("");
   const [name, setName] = useState("");
   const [error, setError] = useState("");
@@ -28,9 +28,9 @@ const SeatSelection = () => {
     console.log(`Added seat ${number}, row ${row}, id ${id}`);
     const newTooltip = `tooltip for id-${id} added by callback`;
     addCb(row, number, id, newTooltip);
-    let temp = seatsSelected;
+    let temp = roomsSelected;
     temp.push(id);
-    setSeatsSelected(temp);
+    setRoomsSelected(temp);
   };
 
   const removeSeatCallback = ({ row, number, id }, removeCb) => {
@@ -38,21 +38,21 @@ const SeatSelection = () => {
     // A value of null will reset the tooltip to the original while '' will hide the tooltip
     const newTooltip = ["A", "B", "C"].includes(row) ? null : "";
     removeCb(row, number, newTooltip);
-    let temp = seatsSelected;
+    let temp = roomsSelected;
     temp.splice(temp.indexOf(id), 1);
-    setSeatsSelected(temp);
+    setRoomsSelected(temp);
   };
   useEffect(() => {
     const details = localStorage.getItem("details");
     const userDetails = localStorage.getItem("user");
-    const travellers = localStorage.getItem("passengers");
-    console.log(travellers);
+    const rooms = localStorage.getItem("passengers");
+    console.log(rooms);
     console.log(details);
     const parsedDetails = JSON.parse(details);
 
     if (userDetails != null && userDetails != undefined) {
       setUserDetails(JSON.parse(userDetails));
-      setPassengers(JSON.parse(travellers));
+      setRooms(JSON.parse(rooms));
       setDetails(JSON.parse(details));
     }
     if (parsedDetails?.seats) {
@@ -93,13 +93,13 @@ const SeatSelection = () => {
     }
     setError("");
     const seatInformation = [];
-    for (let i = 0; i < seatsSelected.length; i++) {
+    for (let i = 0; i < roomsSelected.length; i++) {
       seatInformation.push({
-        seatNo: seatsSelected[i],
-        passengerName: travellersTracker[i],
+        seatNo: roomsSelected[i],
+        passengerName: userTracker[i],
       });
     }
-    console.log(travellersTracker);
+    console.log(userTracker);
 
     console.log(seatInformation);
     const body = {
@@ -109,7 +109,7 @@ const SeatSelection = () => {
       seats: seatInformation,
     };
     console.log(body);
-    if (seatsSelected.length == travellers.length) {
+    if (roomsSelected.length == rooms.length) {
       try {
         const response = await axios.post(
           `http://krishnagupta.live:5000/booking/create`,
@@ -171,9 +171,9 @@ const SeatSelection = () => {
               >
                 <h2>Your entered traveller information:</h2>
                 <br />
-                {travellers.map((passenger) => (
+                {rooms.map((passenger) => (
                   <div key={passenger.firstName}>
-                    Passenger {travellersTracker.push(passenger.firstName)}:
+                    Passenger {userTracker.push(passenger.firstName)}:
                     <b> {passenger.firstName}</b>
                     <br />
                     <br />
@@ -258,7 +258,7 @@ const SeatSelection = () => {
                     addSeatCallback={addSeatCallback}
                     removeSeatCallback={removeSeatCallback}
                     rows={rows}
-                    maxReservableSeats={travellers.length}
+                    maxReservableSeats={rooms.length}
                     visible
                     selectedByDefault
                   />
@@ -336,7 +336,7 @@ const SeatSelection = () => {
                         <p>Passengers</p>
                       </div>
                       <div>
-                        <p>x {travellers.length}</p>
+                        <p>x {rooms.length}</p>
                       </div>
                     </div>
                     <div
@@ -350,7 +350,7 @@ const SeatSelection = () => {
                       </div>
                       <div>
                         <p>
-                          ${(details?.price + details?.tax) * travellers.length}
+                          ${(details?.price + details?.tax) * rooms.length}
                         </p>
                       </div>
                     </div>
@@ -381,7 +381,7 @@ const SeatSelection = () => {
                           $
                           {(
                             (details?.price + details?.tax) *
-                              travellers.length -
+                              rooms.length -
                             loyaltyPoints * 0.093
                           ).toFixed(2)}
                         </p>

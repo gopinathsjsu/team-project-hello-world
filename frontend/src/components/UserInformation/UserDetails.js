@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import SeatSelection from "./SeatSelection";
 import { useHistory } from "react-router";
 
-const userDetails = () => {
+const UserDetails = () => {
   // The parent component
   const [count, setCount] = useState(1); // Name it however you wish
   const [inputList, setInputList] = useState([{ firstName: "", lastName: "" }]);
@@ -109,7 +109,7 @@ const userDetails = () => {
           <SeatSelection
             details={details}
             passengers={JSON.stringify(inputList)}
-            userDetails={userDetails}
+            UserDetails={UserDetails}
           />
         )} */}
       </div>
@@ -117,4 +117,4 @@ const userDetails = () => {
   );
 };
 
-export default userDetails;
+export default UserDetails;

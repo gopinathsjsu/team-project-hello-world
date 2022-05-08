@@ -8,8 +8,8 @@ import UserProfile from "./components/UserProfile/UserProfile";
 import LoginPage from "./components/LoginPage/Login";
 import SingleHotelDetails from "./components/DisplayHotels/SingleHotelDetails";
 import NavigationBar from "./components/NavigationBar";
-import PassengerDetails from "./components/PassengerInformation/PassengerDetails";
-import SeatSelection from "./components/PassengerInformation/SeatSelection";
+import UserDetails from "./components/UserInformation/UserDetails";
+import SeatSelection from "./components/UserInformation/SeatSelection";
 import "bootstrap/dist/css/bootstrap.css";
 
 function App() {
@@ -39,19 +39,19 @@ function App() {
           <Route exact path="/booking">
             <MyReservations />
           </Route>
-          <Route exact path="/displayflights">
+          <Route exact path="/displayhotels">
             <DisplayHotels />
           </Route>
-          <Route exact path="/displayflights/:id">
+          <Route exact path="/displayhotels/:id">
             <SingleHotelDetails />
           </Route>
           <Route exact path="/booking">
             <MyReservations />
           </Route>
-          <Route exact path="/travellerInfo">
-            <PassengerDetails />
+          <Route exact path="/userInfo">
+            <UserDetails />
           </Route>
-          <Route exact path="/seatSelection">
+          <Route exact path="/roomSelection">
             <SeatSelection />
           </Route>
         </Switch>

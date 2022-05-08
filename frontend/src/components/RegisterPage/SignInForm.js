@@ -193,7 +193,7 @@ const SignInForm = () => {
               style={{ marginRight: "10px" }}
               required
             ></input>
-            <label htmlFor="miles">Subscribe to MileagePlus® account</label>
+            <label htmlFor="miles">Subscribe to Loyalty Points</label>
             <br />
             <input type="submit" className="signin-submit-button"></input>
           </form>

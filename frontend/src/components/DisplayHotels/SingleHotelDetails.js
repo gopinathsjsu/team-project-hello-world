@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { Spinner } from "react-bootstrap";
 import { useParams, Link } from "react-router-dom";
-import PassengerDetails from "../PassengerInformation/PassengerDetails";
+import UserDetails from "../UserInformation/UserDetails";
 import { useHistory } from "react-router";
 
 
@@ -113,9 +113,9 @@ const SingleHotelDetails = () => {
             id="enter-passenger-info"
             style={{ marginTop: "15%", display: "none" }}
           >
-            <PassengerDetails
+            <UserDetails
               details={hotelDetails}
-              userDetails={userDetails}
+              UserDetails={UserDetails}
             />
           </div> */}
         </div>

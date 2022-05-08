@@ -88,7 +88,7 @@ function NavBar() {
           </Form>
         </Navbar.Collapse>
       </Container>
-      {/* {userDetails && <p>{userDetails.id}</p>} */}
+      {/* {UserDetails && <p>{UserDetails.id}</p>} */}
     </Navbar>
   );
 }
