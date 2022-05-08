@@ -17,9 +17,9 @@ const SeatSelection = () => {
   const [showSeatSelection, setShowSeatSelection] = useState(false);
   const [rows, setRows] = useState([]);
   const [seatsSelected, setSeatsSelected] = useState([]);
-  const [miles, setMiles] = useState(0);
+  const [loyaltyPoints, setLoyaltyPoints] = useState(0);
   const travellersTracker = [];
-  const [creditCard, setCredirCard] = useState("");
+  const [creditCard, setCreditCard] = useState("");
   const [name, setName] = useState("");
   const [error, setError] = useState("");
   const history = useHistory();
@@ -105,7 +105,7 @@ const SeatSelection = () => {
     const body = {
       userId: userDetails.id,
       flight: details.id,
-      milesUsed: miles,
+      milesUsed: loyaltyPoints,
       seats: seatInformation,
     };
     console.log(body);
@@ -149,7 +149,7 @@ const SeatSelection = () => {
   }
   const formatCreditCard = (e) => {
     let card = cc_format(e.target.value);
-    setCredirCard(card);
+    setCreditCard(card);
   };
 
   return (
@@ -225,15 +225,15 @@ const SeatSelection = () => {
                       min="0"
                       max={userDetails ? userDetails.miles : 100}
                       step="1"
-                      defaultValue={miles}
-                      onChange={(e) => setMiles(e.target.value)}
+                      defaultValue={loyaltyPoints}
+                      onChange={(e) => setLoyaltyPoints(e.target.value)}
                     />
                     <p>
                       Total Miles available are:{" "}
                       <span id="demo">{userDetails?.miles}</span>
                     </p>
                     <p>
-                      Miles to be used: <span id="demo">{miles}</span>
+                      Miles to be used: <span id="demo">{loyaltyPoints}</span>
                     </p>
                   </div>
                   <div></div>
@@ -364,7 +364,7 @@ const SeatSelection = () => {
                         <p>Miles Discount</p>
                       </div>
                       <div>
-                        <p>- ${(miles * 0.093).toFixed(2)}</p>
+                        <p>- ${(loyaltyPoints * 0.093).toFixed(2)}</p>
                       </div>
                     </div>
                     <div
@@ -382,7 +382,7 @@ const SeatSelection = () => {
                           {(
                             (details?.price + details?.tax) *
                               travellers.length -
-                            miles * 0.093
+                            loyaltyPoints * 0.093
                           ).toFixed(2)}
                         </p>
                       </div>

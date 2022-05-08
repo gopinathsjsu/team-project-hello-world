@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import SeatSelection from "./SeatSelection";
 import { useHistory } from "react-router";
 
-const PassengerDetails = () => {
+const userDetails = () => {
   // The parent component
   const [count, setCount] = useState(1); // Name it however you wish
   const [inputList, setInputList] = useState([{ firstName: "", lastName: "" }]);
@@ -45,8 +45,8 @@ const PassengerDetails = () => {
   };
 
   function seatSelection() {
-    for (var i = 0; i <= count - 1; i++) {
-      if (inputList[i].firstName == "") {
+    for (let i = 0; i <= count - 1; i++) {
+      if (inputList[i].firstName === "") {
         console.log("Enter the correct name in all selected fields");
         return;
       } else {
@@ -58,7 +58,7 @@ const PassengerDetails = () => {
 
   return (
     <div className="single-hotel-details" style={{ marginTop: "5%" }}>
-      <h1>Enter your travel information</h1>
+      <h1>Enter your booking information</h1>
 
       {inputList.map((x, i) => {
         return (
@@ -98,7 +98,7 @@ const PassengerDetails = () => {
         <button style={{ marginLeft: "20%" }}>Cancel search</button>
       </Link>
       <button style={{ marginLeft: "5%" }} onClick={seatSelection}>
-        Proceed to Select Seats for {count} passengers
+        Proceed to Select Room for {count} guests
       </button>
 
       <div
@@ -117,4 +117,4 @@ const PassengerDetails = () => {
   );
 };
 
-export default PassengerDetails;
+export default userDetails;
