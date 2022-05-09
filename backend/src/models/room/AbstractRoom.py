@@ -1,4 +1,5 @@
 from abc import ABC, abstractmethod
+from src.models.booking.ModelBooking import ModelBooking
 from src.db import db
 
 
@@ -10,13 +11,16 @@ class AbstractRoom(db.Model):
                 return False
         return True
     
-    @abstractmethod
-    def  getPrice(self):
-        pass
+    def getPrice(self):
+        return self.type.base_price
 
-    @abstractmethod 
-    def bookFor(start,end):
-        pass
+    def bookFor(self,user,start,end):
+        if(self.isAvailableFor(start,end)):
+            b = ModelBooking(start_date=start,end_date=end,room=self,user=user)
+            self.bookings.append(b)
+            db.session.add(b)
+            db.session.commit()
+        
 
 
     

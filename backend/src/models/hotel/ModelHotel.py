@@ -8,13 +8,12 @@ from datetime import date
 class ModelHotel(AbstractHotel):
     __tablename__ = "hotel"
     
-    def __init__(self,room) -> None:
+    def __init__(self) -> None:
         super().__init__()
-        self.rooms = room
         
     id = database.Column(database.Integer, primary_key=True)
     rooms = database.relationship('ModelRoom', backref='hotel', lazy=True)
-    
+    room_types = database.relationship('RoomType', backref='hotel')
     def getPrice(room: AbstractRoom,start,end,Amenities) -> float:
         pass
 
