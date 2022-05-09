@@ -8,13 +8,10 @@ class ModelRoom(AbstractRoom):
     id = db.Column(db.Integer, primary_key=True)
     hotel_id = db.Column(db.Integer, db.ForeignKey('hotel.id'),
         nullable=False)
-
+    type = db.Column(db.I)
     bookings = database.relationship('ModelBooking', backref='room', lazy=True)
     
-    def isAvailableFor(self,start,end):
-        for b in self.bookings:
-            if (b.start_date >= start and b.start_date <= end) or (b.end_date >= start and b.end_date <= end):
-                return False
-        return True
-
+    
+    def getPrice():
+        pass
 db.create_all()
