@@ -18,10 +18,10 @@ const LoginForm = () => {
     const response = await post({ endpoint: "user/login", body: values });
     if (response.status === 200 || response.status === 201) {
       // TODO: Write code for successful login redirection
-      localStorage.setItem("user", JSON.stringify(response.data.user));
-      setUserProfile(response.data.user);
-      console.log("Login Response", response);
-      history.go(-1);
+      localStorage.setItem("user", JSON.stringify(response.data));
+      setUserProfile(response.data);
+      console.log("Login Response", response.data);
+      history.go("/register");
     } else {
       console.log(response);
       setError(response.meesage.data.errors.message);
