@@ -6,6 +6,7 @@ class AbstractUser(ABC):
     def get_user_details(user_id):
         user = userServices.get_user_details(user_id)
         user_dict = {
+            'id': user.id,
             'firstName': user.first_name,
             'lastName': user.last_name,
             'email': user.email,
