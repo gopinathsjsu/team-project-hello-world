@@ -1,0 +1,284 @@
+body {
+  margin: 0;
+  overflow-x: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
+}
+
+.header,
+.personal-info {
+  margin-left: 6rem;
+  margin-right: 3rem;
+  font-size: 1rem;
+}
+
+.signin-textbox {
+  width: 20rem;
+  height: 2.5rem;
+  margin-top: -1rem;
+  margin-right: 3rem;
+}
+
+.selectList {
+  width: 9.5rem;
+  height: 2.9rem;
+}
+
+.dob {
+  width: 4rem;
+  margin-left: 0.75rem;
+  height: 2.5rem;
+}
+
+button,
+input[type="submit"] {
+  background-color: rgb(19, 0, 128);
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-decoration: none;
+  margin: 4px 4px;
+  cursor: pointer;
+  margin-top: 2rem;
+}
+
+button {
+  background-color: rgb(19, 0, 128);
+}
+
+.navigation-bar {
+  background-color: rgb(19, 0, 128);
+  width: 10rem;
+}
+
+.signin h3::after,
+.signin small::after {
+  content: "*";
+  color: red;
+}
+
+/* Put your css in here */
+.input-bar {
+  display: table;
+  width: 100%;
+  margin-top: 10%;
+  margin-left: 20%;
+}
+
+.input-bar input[type="text"] {
+  height: 10rem;
+}
+
+.input-bar-item > button {
+  margin-left: 70rem;
+  height: 10rem;
+  margin-top: -15.5rem;
+  background-color: rgb(19, 0, 128);
+  width: 10rem;
+}
+.input-bar-item button:hover {
+  background-color: rgb(19, 0, 128);
+}
+
+.width100 {
+  width: 25%;
+}
+
+.width100-2 {
+  margin-top: -10rem;
+  margin-left: 35rem;
+}
+
+.book-hotels-form,
+.date-form {
+  margin-left: 2%;
+  margin-top: 2%;
+}
+.book-hotels-form input,
+.book-hotels-form input,
+.book-hotels-form select {
+  width: 20rem;
+  height: 2.5rem;
+}
+
+.booking-id-input {
+  margin-top: 3.5%;
+  width: 15rem;
+  padding: 10px;
+  height: 2.5rem;
+  margin-left: 2%;
+  /* margin-top: 2%; */
+}
+
+.date-form input {
+  height: 2.5rem;
+}
+
+.search-hotels-button {
+  background-color: rgb(19, 0, 128);
+  border: none;
+  color: white;
+  padding: 10px;
+  text-decoration: none;
+  margin-left: 3%;
+  cursor: pointer;
+  margin-top: 3.5%;
+  width: 15rem;
+  height: 3.5rem;
+}
+
+.trip-type {
+  margin-top: 3%;
+  margin-left: 2%;
+}
+
+.book-hotels {
+  margin-left: 5%;
+}
+
+.reservation-header {
+  background-color: rgb(231, 250, 250);
+  height: 10rem;
+  width: 75%;
+  padding: 0.5rem;
+  border: 0.1rem solid gray;
+}
+
+.airline-pnr {
+  float: right;
+  margin-top: -8vw;
+  margin-right: 1vw;
+}
+
+.booking {
+  margin-left: 12.5%;
+}
+table {
+  border-collapse: collapse;
+  width: 77%;
+  border: 1px solid black;
+}
+
+table th,
+td {
+  border-bottom: 1px solid black;
+  border-right: 1px solid black;
+}
+
+table td p {
+  float: right;
+}
+
+.hotel-details {
+  margin-top: 2%;
+}
+
+.manage-reservations button {
+  display: flex;
+  float: left;
+  margin-left: auto;
+}
+
+.hotel-display-holder {
+  width: 50%;
+  margin: auto;
+  height: 20%;
+}
+
+.hotel-details-single {
+  margin-left: 15%;
+  border: 0.5px solid rgb(19, 0, 128);
+}
+.hotel-details-single:hover {
+  cursor: pointer;
+  box-shadow: inset;
+}
+.hotel-details-departing-airport {
+  float: left;
+  margin-left: 2rem;
+}
+
+.hotel-details-arrival-airport {
+  margin-left: 28rem;
+  margin-top: -2.2rem;
+}
+
+.single-hotel-details {
+  margin-left: 10rem;
+}
+
+.passenger-info {
+  margin-left: 5rem;
+}
+
+.seat-map-row {
+  float: left;
+  flex-wrap: nowrap;
+  width: 50rem;
+}
+
+.seat-map-row > div {
+  background-color: #f1f1f1;
+  width: 100px;
+  margin: 20px;
+  text-align: center;
+  line-height: 75px;
+  font-size: 30px;
+  border: 0.5px solid black;
+}
+.seat-map-row > div:hover {
+  cursor: pointer;
+}
+
+.seat-map {
+  margin-left: 15rem;
+  margin-top: 10rem;
+}
+
+.userprofile-card {
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+  margin: 25px;
+  padding: 25px;
+  animation: fade 3s;
+  background-color: #ffffff;
+  animation: alternate 2sec;
+}
+
+.miles-card {
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+  color: white;
+  margin: 25px;
+  animation: fade 3s;
+  background-color: #05164d;
+  animation: alternate 2sec;
+}
+
+.user-bookings-card {
+  border-radius: 20px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.3);
+  margin: 25px;
+  padding: 25px;
+  animation: fade 3s;
+  background-color: #ffffff;
+  animation: alternate 2sec;
+}
+
+.userprofile-title {
+  color: rgb(19, 0, 128);
+}
+
+td,
+th {
+  border: 1px solid #ddd;
+  padding: 8px;
+}

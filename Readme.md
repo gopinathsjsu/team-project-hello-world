@@ -2,15 +2,19 @@
 
  ## Steps:
 
-1. After pulling the latest branch do 
-2. `pipenv install`
-3. Run: `pipenv shell`
-4. Go to: src/models/ and make a folder for each of the modules For refrence see hotel folder.
+### For backend 
+1. Inside backend folder, run `pipenv install`
+2. Run: `pipenv shell`
+3. Go to: src/models/ and make a folder for each of the modules For refrence see hotel folder.
 
+
+### For frontend
+1. Inside frontend folder, run `npm install`
+2. `npm start`
 
 ## Tools and Languages:
 
-Frontend - 
+Frontend - React JS
 
 Backend - Python - Flask
 
@@ -27,7 +31,7 @@ Pratyush Sharma
 
 Ishan Malkan
 
-Prithvi 
+Prithvi Raj
 
 
 ## Scrum meetings schedule:
@@ -48,4 +52,4 @@ Pratyush : Frontend and Backend
 
 Ishan : 
 
-Prithvi : 
+Prithvi : Backend, Integration, Documentation

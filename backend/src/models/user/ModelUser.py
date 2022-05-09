@@ -22,6 +22,10 @@ class ModelUser(db.Model):
     payment_info = db.Column(db.String(16), unique=True, nullable=True)
     layalty_points = db.Column(db.Integer, unique=False, nullable=True)
     bookings = db.Column(db.String(100), unique=False, nullable=True)
+
+    def commitChange():
+        db.session.commit()
+        return
     
     def __init__(self, name, email, payment_info) -> None:
         super().__init__()
@@ -29,10 +33,16 @@ class ModelUser(db.Model):
         self.email = email
         self.payment_info = payment_info
 
-    def dummy():
-        dummy_data = ModelUser('Pratyush', 'pratyush@sharma.com', '123456')
+    def setUser(name, email, payment_info):
+        dummy_data = ModelUser(name, email, payment_info)
         db.session.add(dummy_data)
-        db.session.commit()
+        ModelUser.commitChange()
+        return
+
+    def removeUser(id):
+        ModelUser.query.filter_by(id=id).delete()
+        ModelUser.commitChange()
+        return
 
     def getHotels(start, end, location):
         # hotels = []
@@ -47,7 +57,9 @@ class ModelUser(db.Model):
         return
 
     def bookHotel(room, start, end):
+        AbstractBooking.book(room, start, end)
         return
 
     def cancelBooking(booking_id):
+        AbstractBooking.cancel(booking_id)
         return
