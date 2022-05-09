@@ -21,7 +21,6 @@ from src.models.room.ModelRoom import ModelRoom
 from src.models.user.ModelUser import ModelUser
 from src.routes import userRoutes
 
-db.create_all()
 import src.tests
 
 src.tests.room_test()
