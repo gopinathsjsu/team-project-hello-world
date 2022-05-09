@@ -27,7 +27,7 @@ from src.models.room.ModelRoom import ModelRoom
 db.create_all()
 import src.tests
 
-#src.tests.hotel_test()
+src.tests.room_test()
 
 
 if __name__ == "__main__":
