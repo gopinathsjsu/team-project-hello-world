@@ -9,14 +9,17 @@ from src import app
 def hello():
     return "Hello"
 
+@app.route("/user/<user_id>",methods=["GET"])
+def get_user_details(user_id):
+    user = AbstractUser.get_user_details(user_id)
+    return user
 
 @app.route("/user/register",methods=["POST"])
 def user_registration():
     if request.method == "POST":
         data = request.json
         userServices.add_user(data)
-    return ""
-
+    return 
 
 @app.route("/<user_id>/delete", methods=["DELETE"])
 def delete_user(user_id):
@@ -27,10 +30,10 @@ def delete_user(user_id):
 def get_hotels(start, end, location):
     AbstractUser.get_hotels(start, end, location)
 
-@app.route("/<room>/<start>/<end>")
+@app.route("/book/<room>/<start>/<end>",methods=["GET"])
 def book_hotel(room, start, end):
     AbstractUser.book_hotel(room, start, end)
 
-@app.route("/<booking_id>")
+@app.route("/cancel/<booking_id>",methods=["GET"])
 def cancel_booking(booking_id):
     AbstractUser.cancel_booking(booking_id)

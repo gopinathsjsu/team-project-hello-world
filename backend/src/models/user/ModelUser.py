@@ -19,6 +19,6 @@ class ModelUser(db.Model):
     zip = db.Column(db.Integer, unique=False, nullable=True)
     state = db.Column(db.String(20), unique=False, nullable=True)
     country = db.Column(db.String(20), unique=False, nullable=True)
-    layalty_points = db.Column(db.Integer, unique=False, nullable=True)
+    loyalty_points = db.Column(db.Integer, unique=False, nullable=True)
     bookings = db.relationship('ModelBooking', backref='user', lazy=True)
 

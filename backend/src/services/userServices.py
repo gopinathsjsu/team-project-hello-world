@@ -20,6 +20,11 @@ def add_user(user_data):
 
 def delete_user(user_id):
     from src.models.user.ModelUser import ModelUser
-    user = ModelUser.query.get_or_404(user_id)
+    user = ModelUser.query.get_or_404(id=user_id)
     db.session.delete(user)
     db.session.commit()
+
+def get_user_details(user_id):
+    from src.models.user.ModelUser import ModelUser
+    user = ModelUser.query.get_or_404(user_id)
+    return user

@@ -1,4 +1,4 @@
-from models.user.AbtractUser import AbstractUser
+from src.models.user.AbtractUser import AbstractUser
 from src.models.user.ModelUser import ModelUser
 from src.models.hotel.AbstractHotel import AbstractHotel
 from src.models.room.AbstractRoom import AbstractRoom

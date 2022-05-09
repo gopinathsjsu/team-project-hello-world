@@ -3,6 +3,17 @@ from src.services import userServices
 
 class AbstractUser(ABC):
 
+    def get_user_details(user_id):
+        user = userServices.get_user_details(user_id)
+        user_dict = {
+            'firstName': user.first_name,
+            'lastName': user.last_name,
+            'email': user.email,
+            'phoneNumber': user.phone_number,
+            'loyalty_points': user.loyalty_points
+            }
+        return user_dict
+
     def delete_user(id):
         userServices.deleteUser(id)
 
