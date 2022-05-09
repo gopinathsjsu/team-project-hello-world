@@ -1,7 +1,7 @@
 from typing import List
-from src import db
+from src.db import db
 
-def addUser(user_data):
+def add_user(user_data):
     from src.models.user.ModelUser import ModelUser
     user = ModelUser(
             first_name=user_data['firstName'], 
@@ -13,18 +13,13 @@ def addUser(user_data):
             city=user_data['city'], 
             zip=user_data['zip'], 
             state=user_data['state'], 
-            country=user_data['country'],
-            loyalty_points=0)
+            country=user_data['country']
+    )
     db.session.add(user)
     db.session.commit()
 
-def deleteUser(user_id):
+def delete_user(user_id):
     from src.models.user.ModelUser import ModelUser
     user = ModelUser.query.get_or_404(user_id)
     db.session.delete(user)
     db.session.commit()
-
-def getHotels(start, end, location) -> List:
-    from src.models.hotel.ModelHotel import ModelHotel
-    hotels = ModelHotel.query.filter_by(ModelHotel.location.like(location))
-    return hotels
