@@ -10,6 +10,11 @@ class AbstractUser(ABC):
             'lastName': user.last_name,
             'email': user.email,
             'phoneNumber': user.phone_number,
+            'address': user.address,
+            'city': user.city,
+            'state': user.state,
+            'country': user.country,
+            'zip': user.zip,
             'loyalty_points': user.loyalty_points
             }
         return user_dict
