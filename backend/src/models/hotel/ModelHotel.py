@@ -8,8 +8,8 @@ from datetime import date
 class ModelHotel(AbstractHotel):
     __tablename__ = "hotel"
     
-    def __init__(self,id,room) -> None:
-        self.id = id
+    def __init__(self,room) -> None:
+        super().__init__()
         self.rooms = room
         
     id = database.Column(database.Integer, primary_key=True)

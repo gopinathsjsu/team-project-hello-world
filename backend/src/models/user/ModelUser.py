@@ -21,6 +21,7 @@ class ModelUser(db.Model):
     country = db.Column(db.String(20), unique=False, nullable=True)
     layalty_points = db.Column(db.Integer, unique=False, nullable=True)
     bookings = db.Column(db.String(100), unique=False, nullable=True)
+    bookings = db.relationship('ModelBooking', backref='user', lazy=True)
 
     def __init__(self,first_name,last_name,phone_number,email,password,address,city,zip,state,country) -> None:
         self.first_name = first_name
