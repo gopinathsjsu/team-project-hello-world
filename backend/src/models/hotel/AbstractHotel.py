@@ -71,7 +71,5 @@ class AbstractHotel(database.Model):
 
     def getAmenitiesPricing(Amenities):
         return 0
-    @abstractmethod
-    def book(room: AbstractRoom,start,end):
-        pass
+
         
