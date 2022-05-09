@@ -1,14 +1,13 @@
 from abc import ABC, abstractmethod
-from src.models.booking.AbstractBooking import AbstractBooking
 from src.services import userServices
 from src import app, db
 
 class AbstractUser(ABC):
-    def deleteUser(id):
+    def delete_user(id):
         userServices.deleteUser(id)
 
 
-    def getHotels(start, end, location):
+    def get_hotels(start, end, location):
         hotels = []
         hotels = userServices.getHotels(start, end, location)
 
@@ -20,10 +19,14 @@ class AbstractUser(ABC):
         return available_hotels
     
 
-    def bookHotel(room, start, end):
+    def book_hotel(room, start, end):
+        from src.models.booking.AbstractBooking import AbstractBooking
+
         AbstractBooking.book(room, start, end)
 
 
-    def cancelBooking(booking_id):
+    def cancel_booking(booking_id):
+        from src.models.booking.AbstractBooking import AbstractBooking
+        
         AbstractBooking.cancel(booking_id)
         

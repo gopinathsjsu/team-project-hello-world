@@ -33,12 +33,3 @@ class ModelUser(db.Model):
         self.city = city
         self.state = state
         self.country = country
-
-    def getHotels(start, end, location):
-        pass
-
-    def bookHotel(room, start, end):
-        pass
-
-    def cancelBooking(booking_id):
-        pass

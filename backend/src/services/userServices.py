@@ -20,7 +20,8 @@ def addUser(user_data):
 
 def deleteUser(user_id):
     from src.models.user.ModelUser import ModelUser
-    ModelUser.query.filter_by(id=user_id).delete()
+    user = ModelUser.query.get_or_404(user_id)
+    db.session.delete(user)
     db.session.commit()
 
 def getHotels(start, end, location) -> List:
