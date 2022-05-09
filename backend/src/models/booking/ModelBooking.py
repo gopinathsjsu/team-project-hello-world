@@ -8,3 +8,7 @@ class ModelBooking(AbstractBooking):
     end_date =  database.Column(database.DateTime)
     room_id = database.Column(database.Integer, database.ForeignKey('room.id'),nullable=False)
     user_id = database.Column(database.Integer, database.ForeignKey('User.id'),nullable=False)
+
+    def __init__(self,**kwargs) -> None:
+        super().__init__(**kwargs)
+

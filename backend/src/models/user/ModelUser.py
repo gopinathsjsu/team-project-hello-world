@@ -22,6 +22,7 @@ class ModelUser(db.Model):
     payment_info = db.Column(db.String(16), unique=True, nullable=True)
     layalty_points = db.Column(db.Integer, unique=False, nullable=True)
     bookings = db.Column(db.String(100), unique=False, nullable=True)
+    bookings = db.relationship('ModelBooking', backref='user', lazy=True)
 
     def commitChange():
         db.session.commit()
