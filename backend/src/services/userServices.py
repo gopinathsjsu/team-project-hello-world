@@ -17,6 +17,7 @@ def add_user(user_data):
     )
     db.session.add(user)
     db.session.commit()
+    return user
 
 def delete_user(user_id):
     from src.models.user.ModelUser import ModelUser

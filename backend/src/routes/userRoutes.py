@@ -22,8 +22,9 @@ def get_user_details(user_id):
 def user_registration():
     if request.method == "POST":
         data = request.json
-        userServices.add_user(data)
-    return "User added"
+        res = userServices.add_user(data)
+        user = AbstractUser.get_user_details(res.id)
+        return user
 
 @app.route("/<user_id>/delete", methods=["DELETE"])
 def delete_user(user_id):
