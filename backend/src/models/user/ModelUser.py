@@ -1,5 +1,5 @@
 from src.models.booking.AbstractBooking import AbstractBooking
-from src.models.user.AbtractUser import AbstractUser
+from src.models.user.AbstractUser import AbstractUser
 from abc import ABC
 from typing import List
 from src.db import db

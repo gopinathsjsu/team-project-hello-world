@@ -1,6 +1,6 @@
 from flask import Blueprint, request
 from src.services import userServices
-from src.models.user.AbtractUser import AbstractUser
+from src.models.user.AbstractUser import AbstractUser
 from src import app
 from flask_cors import CORS, cross_origin
 
@@ -38,14 +38,21 @@ def user_login():
     return user
 
 @app.route("/hotels/<start>/<end>/<location>", methods=["GET"])
+@cross_origin()
 def get_hotels(start, end, location):
     hotels = AbstractUser.get_hotels(start, end, location)
     return hotels
 
 @app.route("/book/<room>/<start>/<end>",methods=["GET"])
+@cross_origin()
 def book_hotel(room, start, end):
     AbstractUser.book_hotel(room, start, end)
 
-@app.route("/cancel/<booking_id>",methods=["GET"])
-def cancel_booking(booking_id):
-    AbstractUser.cancel_booking(booking_id)
+@app.route("/booking/cancel",methods=["POST"])
+@cross_origin()
+def cancel_booking():
+    if request.method == "POST":
+        data = request.json
+        AbstractUser.cancel_booking(data["booking_id"])
+        return "Booking cancelled"
+
