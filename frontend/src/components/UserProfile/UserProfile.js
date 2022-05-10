@@ -7,7 +7,8 @@ import moment from "moment";
 
 const UserProfile = (props) => {
   const [userDetails, setUserDetails] = useState();
-  const [userBookings, setUserBookings] = useState();
+  // const [userBookings, setUserBookings] = useState();
+  let userBookings = null
   const history = useHistory();
   const [values, handleChange] = useForm({
     email: "",
@@ -23,15 +24,15 @@ const UserProfile = (props) => {
       history.go(-1);
     }
 
-    fetch(`http://localhost:5000/booking/user/${JSON.parse(user).id}`, {
+    fetch(`http://localhost:5000/user/${JSON.parse(user).id}`, {
       method: "GET",
     })
       .then((res) => {
         if (res.status === 200) return res.json();
       })
-      .then((data) => {
-        setUserBookings(data);
-      })
+      // .then((data) => {
+      //   setUserBookings(data);
+      // })
       .catch((err) => {
         console.log(err);
       });
@@ -48,7 +49,7 @@ const UserProfile = (props) => {
           >
             <h3 style={{ padding: "20px" }}>
               <em>
-                Welcome Onboard, {userDetails.firstName} {userDetails.lastName}
+                Welcome to your profile, {userDetails.firstName} {userDetails.lastName}
               </em>
             </h3>
           </div>
@@ -65,20 +66,20 @@ const UserProfile = (props) => {
             <Col>
               <Col className="miles-card" style={{ padding: "45px" }}>
                 <h4>
-                  <em>fhMiles</em> Member
+                  <em>Loyalty Points</em> Member
                 </h4>
 
                 <div style={{ paddingTop: "30px" }}>
                   <h4>
-                    <em>{userDetails.miles}</em>
-                    <p>status miles</p>
+                    <em>{userDetails.loyalty_points}</em>
+                    <p>total loyalty points</p>
                   </h4>
                 </div>
                 <div>
                   <p>
                     {`You still require ${
-                      40000 - userDetails.miles
-                    } status miles or 28 flight segments for qualification as a Frequent Traveller.`}
+                      40000 - userDetails.loyalty_points
+                    } to be a Prime Loyalty Member.`}
                   </p>
                 </div>
               </Col>
@@ -98,14 +99,14 @@ const UserProfile = (props) => {
                 <div
                   style={{ display: "flex", justifyContent: "space-between" }}
                 >
-                  <h4>Trip & Miles History</h4>
+                  <h4>Previous bookings</h4>
                 </div>
                 {userBookings === null ||
                 userBookings === undefined ||
                 userBookings.length === 0 ? (
                   <div style={{ textAlign: "center", padding: "30px" }}>
                     {console.log({ userBookings })}
-                    You have not booked any flights yet.
+                    You have not booked any room yet.
                   </div>
                 ) : (
                   <>

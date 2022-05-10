@@ -27,8 +27,8 @@ const SignInForm = () => {
     const response = await post({ endpoint: "user/register", body: values });
     if (response.status == 200 || response.status == 201) {
       // TODO: Write code for successful login redirection
-      localStorage.setItem("user", JSON.stringify(response.data.user));
-      console.log(response);
+      localStorage.setItem("user", JSON.stringify(response.data));
+      console.log(response.data);
       history.replace("/");
     } else {
       console.log(response);
@@ -49,7 +49,7 @@ const SignInForm = () => {
             <h1>Personal Information</h1>
             <p>
               Your name, date of birth and gender should match the
-              government-issued ID that you show at the airport.
+              ID that you'll show at the hotel.
             </p>
             <div style={{ display: "flex" }}>
               <div>
@@ -100,8 +100,6 @@ const SignInForm = () => {
                   name="password"
                   className="signin-textbox"
                   minLength="8"
-                  value={values.password}
-                  onChange={handleChange}
                   value={values.password}
                   onChange={handleChange}
                 ></input>
@@ -173,7 +171,7 @@ const SignInForm = () => {
               </div>
             </div>
             <br />
-            <h6>ZipCode *</h6>
+            <h6>Zip Code *</h6>
             <input
               type="tel"
               className="signin-textbox"
@@ -186,6 +184,8 @@ const SignInForm = () => {
             ></input>
             <br />
             <br />
+            <label> * Mandatory Fields</label>
+            <br></br><br></br>
             <input
               type="checkbox"
               id="miles"

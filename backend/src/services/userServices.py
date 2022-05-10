@@ -26,6 +26,7 @@ def validate_manager(token):
 
 def add_user(user_data):
     from src.models.user.ModelUser import ModelUser
+
     user = ModelUser(
             first_name=user_data['firstName'], 
             last_name=user_data['lastName'], 
@@ -40,9 +41,23 @@ def add_user(user_data):
     )
     db.session.add(user)
     db.session.commit()
+    return user
 
 def delete_user(user_id):
     from src.models.user.ModelUser import ModelUser
-    user = ModelUser.query.get_or_404(user_id)
+
+    user = ModelUser.query.get_or_404(id=user_id)
     db.session.delete(user)
     db.session.commit()
+
+def get_user_details(user_id):
+    from src.models.user.ModelUser import ModelUser
+
+    user = ModelUser.query.get_or_404(user_id)
+    return user
+
+def get_user_by_email_password(email, password):
+    from src.models.user.ModelUser import ModelUser
+
+    user = ModelUser.query.filter_by(email=email, password=password).first_or_404()
+    return user

@@ -3,8 +3,12 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import dotenv_values
 from src.routes.hotelRoutes import hotel
+from flask_cors import CORS
 
 app = Flask(__name__)
+
+CORS(app, resources={r"/*": {"origins": "*"}})
+app.config['CORS_HEADERS'] = 'Content-Type'
 
 app.app_context().push()
 config = dotenv_values(".env")

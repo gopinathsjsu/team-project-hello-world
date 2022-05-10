@@ -10,6 +10,7 @@ cloud-sql-python-connector = {extras = ["pymysql"], version = "*"}
 python-dotenv = "*"
 psycopg2-binary = "*"
 pyjwt = "*"
+flask-cors = "*"
 
 [dev-packages]
 

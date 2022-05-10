@@ -1,6 +1,6 @@
 import enum
 from src.models.booking.AbstractBooking import AbstractBooking
-from src.models.user.AbtractUser import AbstractUser
+from src.models.user.AbstractUser import AbstractUser
 from abc import ABC
 from typing import List
 from src.db import db
@@ -21,7 +21,7 @@ class ModelUser(db.Model):
     id = db.Column(db.Integer, unique=True, primary_key=True)
     first_name = db.Column(db.String(100), unique=False, nullable=False)
     last_name = db.Column(db.String(100), unique=False, nullable=True)
-    phone_number = db.Column(db.Integer, unique=True, nullable=False)
+    phone_number = db.Column(db.String(12), unique=True, nullable=False)
     email = db.Column(db.String(70), unique=True, nullable=False)
     password = db.Column(db.String(100), unique=False, nullable=True)
     address = db.Column(db.String(100), unique=False, nullable=True)
