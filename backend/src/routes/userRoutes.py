@@ -1,4 +1,6 @@
+from crypt import methods
 from flask import Blueprint, request
+import jwt
 from src.services import userServices
 from src.models.user.AbtractUser import AbstractUser
 from src import app
@@ -17,6 +19,24 @@ def user_registration():
         userServices.add_user(data)
     return ""
 
+@app.route("/user/login",methods=["POST"])
+def login():
+    user_data = request.get_json()
+    data = userServices.login(user_data["username"],user_data["password"])
+    if(data == None):
+        return "404"
+    else:
+        print(str(data.type))
+        token = jwt.encode({"username" : data.email,"type":str(data.type)},"CMPE202PROJ",algorithm="HS256")
+        resp = {"response":{"username" : data.email},"token":token}
+        return resp
+
+@app.route("/user/dummy",methods=["POST"])
+def dummy():
+    req =request.get_json()
+    print(req["token"])
+    x = userServices.validate_customer(req["token"])
+    return str(x)
 
 @app.route("/<user_id>/delete", methods=["DELETE"])
 def delete_user(user_id):

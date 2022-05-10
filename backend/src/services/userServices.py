@@ -1,5 +1,28 @@
 from typing import List
 from src.db import db
+import jwt
+
+
+def login(username,password):
+    from src.models.user.ModelUser import ModelUser
+    return ModelUser.query.filter_by(email=username,password=password).first();
+
+def validate_customer(token):
+    try:
+        print(token)
+        data= jwt.decode(token,"CMPE202PROJ",algorithms="HS256")
+        return data["type"]=="customer"
+    except:
+        return False
+
+def validate_manager(token):
+    try: 
+        print(token)
+        data= jwt.decode(token,"CMPE202PROJ",algorithms="HS256")
+        return data["type"]=="manager"
+    except:
+        return False
+
 
 def add_user(user_data):
     from src.models.user.ModelUser import ModelUser

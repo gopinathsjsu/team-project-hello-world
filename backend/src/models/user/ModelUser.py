@@ -1,8 +1,18 @@
+import enum
 from src.models.booking.AbstractBooking import AbstractBooking
 from src.models.user.AbtractUser import AbstractUser
 from abc import ABC
 from typing import List
 from src.db import db
+
+
+class UserType(enum.Enum):
+    customer = "customer"
+    manager  = "manager"
+
+    def __str__(self):
+        return self.value
+
 
 class ModelUser(db.Model):
 
@@ -20,5 +30,7 @@ class ModelUser(db.Model):
     state = db.Column(db.String(20), unique=False, nullable=True)
     country = db.Column(db.String(20), unique=False, nullable=True)
     layalty_points = db.Column(db.Integer, unique=False, nullable=True)
+    type = db.Column(db.Enum(UserType),nullable=False)
     bookings = db.relationship('ModelBooking', backref='user', lazy=True)
+
 

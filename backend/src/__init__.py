@@ -23,7 +23,7 @@ from src.routes import userRoutes
 
 import src.tests
 
-src.tests.room_test()
+#src.tests.room_test()
 
 
 if __name__ == "__main__":
