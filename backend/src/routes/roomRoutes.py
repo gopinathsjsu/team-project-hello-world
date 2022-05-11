@@ -24,7 +24,7 @@ def get_home(hotel_id):
             return json.dumps(room.as_dict())
 
 
-@room.route("/get_available/<room_id>",methods=["GET"])
+@room.route("/getAvailable/<room_id>",methods=["GET"])
 def get_room_availibility(room_id):
     req =request.get_json()
     return str(roomServices.room_available(room_id=room_id,start=req["start"],end=req["end"]))
