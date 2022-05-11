@@ -34,9 +34,12 @@ def login():
     if(data == None):
         return "404"
     else:
-        print(str(data.type))
-        token = jwt.encode({"username" : data.email,"type":str(data.type)},"CMPE202PROJ",algorithm="HS256")
-        resp = {"response":{"email" : data.email},"token":token}
+        type = str(data.type)
+        token = jwt.encode({"username" : data.email,"type":str(type)},"CMPE202PROJ",algorithm="HS256")
+        send_val = data.as_dict()
+        print(send_val)
+        send_val["type"] = type
+        resp = {"response":{"user" : send_val},"token":token}
         return resp
 
 @user.route("/dummy",methods=["POST"])
