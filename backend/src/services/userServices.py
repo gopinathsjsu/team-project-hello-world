@@ -58,7 +58,7 @@ def delete_user(user_id):
 def get_user_details(user_id):
     from src.models.user.ModelUser import ModelUser
 
-    user = ModelUser.query.get_or_404(user_id)
+    user = ModelUser.query.get(user_id)
     return user
 
 def get_user_by_email_password(email, password):
