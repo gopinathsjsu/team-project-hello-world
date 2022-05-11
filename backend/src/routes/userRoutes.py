@@ -1,13 +1,14 @@
 from crypt import methods
-from flask import Blueprint, request
+from flask import Blueprint, request,jsonify,abort
 import jwt
+from src.models.booking.ModelBooking import ModelBooking
+from src.routes import bookingRoutes
 from src.services import userServices
 from src.models.user.AbstractUser import AbstractUser
 from src import app
 from flask_cors import CORS, cross_origin
 
 user = Blueprint("user", __name__, url_prefix='/user')
-CORS(app, resources={r"/*": {"origins": "*"}})
 
 @user.route("/<user_id>",methods=["GET"])
 @cross_origin() 
@@ -24,16 +25,19 @@ def user_registration():
         user = AbstractUser.get_user_details(res.id)
         return user
 
-@app.route("/login",methods=["POST"])
+@user.route("/login",methods=["POST"])
 def login():
     user_data = request.get_json()
     data = userServices.login(user_data["email"],user_data["password"])
     if(data == None):
-        return "404"
+        return abort(404)
     else:
-        print(str(data.type))
-        token = jwt.encode({"username" : data.email,"type":str(data.type)},"CMPE202PROJ",algorithm="HS256")
-        resp = {"response":{"email" : data.email},"token":token}
+        type = str(data.type)
+        token = jwt.encode({"username" : data.email,"type":str(type)},"CMPE202PROJ",algorithm="HS256")
+        send_val = data.as_dict()
+        print(send_val)
+        send_val["type"] = type
+        resp = {"response":{"user" : send_val},"token":token}
         return resp
 
 @user.route("/dummy",methods=["POST"])
@@ -65,3 +69,7 @@ def cancel_booking():
         data = request.json
         AbstractUser.cancel_booking(data["booking_id"])
         return "Booking cancelled"
+
+@user.route("/user/getBooking/<user_id>")
+def get_by_user(user_id):
+    return jsonify(list(map(lambda x: x.as_dict(),ModelBooking.query.filter_by(user_id=user_id).all())))

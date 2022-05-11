@@ -12,6 +12,7 @@ hotel = Blueprint("hotel", __name__, url_prefix='/hotel')
 
 @hotel.route("/",methods=["GET","POST"])
 def home_route():
+    #TODO:Work on filters for hotels
     if request.method == "GET":
         return jsonify(list(map(lambda x: x.as_dict(), hotelServices.get_hotels())))
     if request.method == "POST":

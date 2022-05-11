@@ -14,7 +14,7 @@ class UserType(enum.Enum):
     def __str__(self):
         return self.value
 
-
+    
 class ModelUser(db.Model):
 
     __tablename__ = "user"
@@ -33,5 +33,9 @@ class ModelUser(db.Model):
     layalty_points = db.Column(db.Integer, unique=False, nullable=True)
     type = db.Column(db.Enum(UserType),nullable=False)
     bookings = db.relationship('ModelBooking', backref='user', lazy=True)
+
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
 
 
