@@ -2,33 +2,33 @@ import React, { useState, useEffect } from "react";
 import ReservationDetails from "./ReservationDetails";
 import axios from "axios";
 import { useHistory } from "react-router";
+import { get } from "../../utils/Api";
 
-const MyReservations = () => {
-  const [reservations, setReservations] = useState(null);
+const MyBookings = () => {
+  const [bookings, setBookings] = useState(null);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const history = useHistory();
+
   async function cancelBooking() {
     const user = localStorage.getItem("user");
+    
     const body = {
-      userId: JSON.parse(user).id,
-      flight: reservations.flight.id,
-      pnr: reservations.pnr,
+      booking_id: bookings.booking_id,
     };
+
     console.log({ body });
     try {
-      const response = await axios.post(
-        `http://localhost:5000/booking/cancel`,
-        body
-      );
+      let endpoint = "cancel/" + JSON.parse(user).id
+      const response = await get({endpoint: endpoint})
+      
       if (response.status === 200) {
         console.log(response.data);
         try {
-          const res = await axios.get(
-            `http:/localhost:5000/user/profile/${JSON.parse(user).id}`
-          );
+          let url = "user/" + JSON.parse(user).id
+          const res = await get({endpoint: url})
           console.log(res);
           if (res.status) {
-            localStorage.setItem("user", JSON.stringify(res.data.user));
+            localStorage.setItem("user", JSON.stringify(res.data));
           } else {
             console.log(res);
           }
@@ -53,26 +53,29 @@ const MyReservations = () => {
       setIsLoggedIn(true);
     }
     const queryParams = new URLSearchParams(window.location.search);
-    const pnr = queryParams.get("pnr");
-    const params = pnr;
+    const bookingId = queryParams.get("booking_id");
+    const params = bookingId;
 
     console.log(params);
-    axios
-      .get(`http://localhost:5000/booking/${params}`)
-      .then((response) => {
-        console.log(response.data);
-        setReservations(response.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    // axios
+    //   .get(`http://localhost:5000/booking/${params}`)
+    //   .then((response) => {
+    //     console.log(response.data);
+    //     setBookings(response.data);
+    //   })
+    //   .catch((err) => {
+    //     console.log(err);
+    //   });
+    let end = "booking/" + params
+    const res = get({endpoints: end});
+    setBookings(res.data)
   }, []);
 
   return (
     <div style={{ display: "flex", flexDirection: "column" }}>
-      {reservations && <ReservationDetails reservations={reservations} />}
+      {bookings && <ReservationDetails reservations={bookings} />}
 
-      {isLoggedIn && reservations?.status === "ACTIVE" && (
+      {isLoggedIn && bookings?.status === "ACTIVE" && (
         <div
           style={{ display: "flex", justifyContent: "center", margin: "20px" }}
         >
@@ -83,4 +86,4 @@ const MyReservations = () => {
   );
 };
 
-export default MyReservations;
+export default MyBookings;

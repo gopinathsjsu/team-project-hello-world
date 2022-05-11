@@ -6,7 +6,7 @@ import { Redirect, useHistory } from "react-router-dom";
 const LoginForm = () => {
   const [values, handleChange] = useForm({
     email: "",
-    password: "",
+    password: ""
   });
 
   const history = useHistory();
@@ -19,6 +19,7 @@ const LoginForm = () => {
     if (response.status === 200 || response.status === 201) {
       // TODO: Write code for successful login redirection
       localStorage.setItem("user", JSON.stringify(response.data));
+      localStorage.setItem("token", JSON.stringify(response.data.token))
       setUserProfile(response.data);
       console.log("Login Response", response.data);
       history.go("/register");
@@ -45,7 +46,7 @@ const LoginForm = () => {
       ) : (
         <div
           className="login"
-          style={{ display: "flex", justifyContent: "flex-start" }}
+          style={{ display: "flex", justifyContent: "flex-start"}}
         >
           <form onSubmit={checkLoginDetails}>
             <h4>Enter email</h4>
