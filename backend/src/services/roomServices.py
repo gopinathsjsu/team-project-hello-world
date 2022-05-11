@@ -1,3 +1,4 @@
+from datetime import datetime
 from src.models.user.ModelUser import ModelUser
 from  src.db import db
 from src.models.hotel.ModelHotel import ModelHotel
@@ -32,7 +33,7 @@ def get_room_types(hotel_id):
 def room_available(room_id,start,end):
     room = ModelRoom.query.get(room_id)
 
-    return room.isAvailableFor(start,end)
+    return room.isAvailableFor(datetime.strptime(start,"%Y/%m/%d"),datetime.strptime(end,"%Y/%m/%d"))
 
 def book_room(room_id,user_id,start,end):
     

@@ -1,6 +1,8 @@
 from crypt import methods
-from flask import Blueprint, request
+from flask import Blueprint, request,jsonify
 import jwt
+from src.models.booking.ModelBooking import ModelBooking
+from src.routes import bookingRoutes
 from src.services import userServices
 from src.models.user.AbstractUser import AbstractUser
 from src import app
@@ -30,6 +32,7 @@ def user_registration():
 
 @app.route("/user/login",methods=["POST"])
 def login():
+    #TODO: return whole user object
     user_data = request.get_json()
     data = userServices.login(user_data["username"],user_data["password"])
     if(data == None):
@@ -69,3 +72,7 @@ def cancel_booking():
         data = request.json
         AbstractUser.cancel_booking(data["booking_id"])
         return "Booking cancelled"
+
+@app.route("/user/getBooking/<user_id>")
+def get_by_user(user_id):
+    return jsonify(list(map(lambda x: x.as_dict(),ModelBooking.query.filter_by(user_id=user_id).all())))

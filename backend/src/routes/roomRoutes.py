@@ -12,7 +12,7 @@ from src.services import roomServices
 from src.db import db
 room = Blueprint("room", __name__, url_prefix='/room')
 room_type = Blueprint("room_type", __name__, url_prefix='/roomType')
-
+#TODO: Get All available rooms for hotels
 @room.route("/<hotel_id>",methods=["GET","POST"])
 def get_home(hotel_id):
     if request.method == "GET":
