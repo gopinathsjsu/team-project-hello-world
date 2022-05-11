@@ -4,11 +4,12 @@ import { useHistory } from "react-router";
 import { Navbar, Card, Col, Row, Spinner } from "react-bootstrap";
 import Button from "@restart/ui/esm/Button";
 import moment from "moment";
+import { get, post } from "../../utils/Api";
 
 const UserProfile = (props) => {
   const [userDetails, setUserDetails] = useState();
-  // const [userBookings, setUserBookings] = useState();
-  let userBookings = null
+  const [userBookings, setUserBookings] = useState();
+
   const history = useHistory();
   const [values, handleChange] = useForm({
     email: "",
@@ -24,18 +25,10 @@ const UserProfile = (props) => {
       history.go(-1);
     }
 
-    fetch(`http://localhost:5000/user/${JSON.parse(user).id}`, {
-      method: "GET",
-    })
-      .then((res) => {
-        if (res.status === 200) return res.json();
-      })
-      // .then((data) => {
-      //   setUserBookings(data);
-      // })
-      .catch((err) => {
-        console.log(err);
-      });
+    let endpoint = "user/" + JSON.parse.id + "/bookings"
+    const resp = get({endpoint: endpoint});
+
+    setUserBookings(resp);
   }, []);
 
   return (
@@ -71,7 +64,7 @@ const UserProfile = (props) => {
 
                 <div style={{ paddingTop: "30px" }}>
                   <h4>
-                    <em>{userDetails.loyalty_points}</em>
+                    <em>{userDetails.layalty_points}</em>
                     <p>total loyalty points</p>
                   </h4>
                 </div>
@@ -124,7 +117,7 @@ const UserProfile = (props) => {
                                   justifyContent: "space-between",
                                 }}
                               >
-                                <em>{`Booking Id. ${item.pnr}`}</em>
+                                <em>{`Booking Id. ${item.booking_id}`}</em>
                                 {isActive && (
                                   <p
                                     style={{
@@ -151,7 +144,7 @@ const UserProfile = (props) => {
                                   <Button
                                     onClick={(e) => {
                                       e.preventDefault();
-                                      history.push(`/booking/?pnr=${item.pnr}`);
+                                      history.push(`/booking/?pnr=${item.booking_id}`);
                                     }}
                                     style={{
                                       backgroundColor: "white",

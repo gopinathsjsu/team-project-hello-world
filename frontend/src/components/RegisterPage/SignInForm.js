@@ -16,7 +16,7 @@ const SignInForm = () => {
     zip: "",
     state: "",
     country: "",
-    role: "user",
+    type: "",
   });
 
   const history = useHistory();

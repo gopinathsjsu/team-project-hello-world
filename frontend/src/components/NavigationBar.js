@@ -7,18 +7,14 @@ function NavBar() {
   const history = useHistory();
   const [userDetails, setUserDetails] = useState();
 
-  useEffect(() => {
-    setInterval(() => {
-      const user = localStorage.getItem("user");
-      if (
-        user != null &&
-        user != undefined &&
-        JSON.stringify(userDetails) != user
-      ) {
-        setUserDetails(JSON.parse(user));
-      }
-    }, 500);
-  }, []);
+  // useEffect(() => {
+  //   setInterval(() => {
+  //     const user = localStorage.getItem("user");
+  //     if ( user !== undefined && user !== null){
+  //       setUserDetails(JSON.parse(user));
+  //     }
+  //   }, 500);
+  // }, []);
 
   const logoutClicked = (e) => {
     e.preventDefault();
