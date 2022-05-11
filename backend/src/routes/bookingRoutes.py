@@ -5,7 +5,6 @@ from src.models.booking.ModelBooking import ModelBooking
 from src.models.user.ModelUser import ModelUser
 
 booking = Blueprint("booking", __name__, url_prefix='/booking')
-#TODO: Get booking by user id
 #TODO: Don't let book for more than 7 days
 @booking.route("/",methods=["GET"])
 def get():
