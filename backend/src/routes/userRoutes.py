@@ -26,7 +26,7 @@ def user_registration():
         user = AbstractUser.get_user_details(res.id)
         return user
 
-@app.route("/login",methods=["POST"])
+@user.route("/login",methods=["POST"])
 def login():
     #TODO: return whole user object
     user_data = request.get_json()
