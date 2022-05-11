@@ -51,13 +51,6 @@ def dummy():
 def delete_user(user_id):
     AbstractUser.delete_user(user_id)
 
-@app.route("/user/login", methods = ["POST"])
-@cross_origin()
-def user_login():
-    data = request.json
-    user = AbstractUser.get_user_by_email_password(data["email"], data["password"])
-    return user
-
 @app.route("/hotels/<start>/<end>/<location>", methods=["GET"])
 @cross_origin()
 def get_hotels(start, end, location):
