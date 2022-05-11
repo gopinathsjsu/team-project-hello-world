@@ -31,13 +31,13 @@ def user_registration():
 @app.route("/user/login",methods=["POST"])
 def login():
     user_data = request.get_json()
-    data = userServices.login(user_data["username"],user_data["password"])
+    data = userServices.login(user_data["email"],user_data["password"])
     if(data == None):
         return "404"
     else:
         print(str(data.type))
         token = jwt.encode({"username" : data.email,"type":str(data.type)},"CMPE202PROJ",algorithm="HS256")
-        resp = {"response":{"username" : data.email},"token":token}
+        resp = {"response":{"email" : data.email},"token":token}
         return resp
 
 @app.route("/user/dummy",methods=["POST"])
