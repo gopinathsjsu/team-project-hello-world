@@ -2,8 +2,9 @@ from crypt import methods
 from requests import request
 from flask import Blueprint
 from flask import request,jsonify
+from src.models.hotel.ModelHotel import ModelHotel
+from src.services import hotelServices
 from src.services import userServices
-from src.services.hotelServices import *
 import json
 hotel = Blueprint("hotel", __name__, url_prefix='/hotel')
 
@@ -22,3 +23,8 @@ def home_route():
             return json.dumps(hotel.as_dict())
         else:
             return "400"
+@hotel.route("/<hotel_id>/rooms",methods=["GET"])
+def get_rooms(hotel_id):
+    
+    from src.services import hotelServices
+    print(hotelServices.get_rooms(hotel_id))

@@ -1,5 +1,4 @@
 from typing import List
-from src.models.user.ModelUser import ModelUser
 from src.db import db
 import jwt
 
@@ -17,6 +16,7 @@ def validate_customer(token):
         return False
 
 def validate_manager(token):
+    from src.models.user.ModelUser import ModelUser
     try: 
         print(token)
         data= jwt.decode(token,"CMPE202PROJ",algorithms="HS256")
