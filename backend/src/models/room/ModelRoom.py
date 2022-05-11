@@ -13,6 +13,9 @@ class ModelRoom(AbstractRoom):
 
     bookings = database.relationship('ModelBooking', backref='room', lazy=True)
 
+    def as_dict(self):
+       return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
 
 class RoomType(db.Model):
     __tablename__ = "room_type"
@@ -21,6 +24,9 @@ class RoomType(db.Model):
     base_price = db.Column(db.Float,nullable=False)
     hotel_id = db.Column(db.Integer, db.ForeignKey('hotel.id'),
         nullable=False)
+
+    def as_dict(self):
+       return {c.name: getattr(self, c.name) for c in self.__table__.columns}
 
 
 

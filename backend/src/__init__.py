@@ -2,7 +2,7 @@ from flask import Flask
 from flask_sqlalchemy import SQLAlchemy
 from dotenv import dotenv_values
 from src.routes.hotelRoutes import hotel
-from src.routes.roomRoutes import room
+from src.routes.roomRoutes import room,room_type
 from flask_cors import CORS
 
 app = Flask(__name__)
@@ -20,6 +20,8 @@ db.init_app(app)
 
 app.register_blueprint(hotel)
 app.register_blueprint(room)
+app.register_blueprint(room_type)
+
 
 from src.models.hotel.ModelHotel import ModelHotel
 from src.models.room.ModelRoom import ModelRoom
