@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import HotelList from "./HotelList";
 import { Spinner } from "react-bootstrap";
+// import bg from "hotel.jpg";
 
 
 const BookHotelsForm = () => {
@@ -85,13 +86,14 @@ const BookHotelsForm = () => {
             </form>
           </div>
         </>
-      ) : (
+      ) : (   
         <div
           style={{
             display: "flex",
             justifyContent: "center",
             alignItems: "center",
             height: "90vh",
+            backgroundImage : "url('../../images/hotel.jpg')"
           }}
         >
           <h3>Hotel Booking App</h3>
