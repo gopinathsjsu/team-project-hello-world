@@ -55,8 +55,8 @@ Ishan : Backend and Front end
 Prithvi : Frontend, Backend, Documentation
 
 ## DataBase Design 
+![Architecture Diagram](https://user-images.githubusercontent.com/58871002/167961800-7036d739-03ec-4eab-ac77-ffb224fb0089.png)
 
-![Architecture Diagram Prithvi](https://user-images.githubusercontent.com/58871002/167961654-384c5cce-9a99-4029-a325-0cbfe2e617ed.png)
 
 ## Deployment Diagram
 
