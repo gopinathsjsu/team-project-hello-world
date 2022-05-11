@@ -69,4 +69,3 @@ def cancel_booking():
         data = request.json
         AbstractUser.cancel_booking(data["booking_id"])
         return "Booking cancelled"
-
