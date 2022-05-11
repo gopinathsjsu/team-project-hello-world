@@ -30,7 +30,7 @@ def login():
     user_data = request.get_json()
     data = userServices.login(user_data["email"],user_data["password"])
     if(data == None):
-        return abort(404)
+        return abort(404,"You have enterted invalid email or password")
     else:
         type = str(data.type)
         token = jwt.encode({"username" : data.email,"type":str(type)},"CMPE202PROJ",algorithm="HS256")
