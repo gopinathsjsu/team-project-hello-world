@@ -1,4 +1,3 @@
-from src.models.user.AbtractUser import AbstractUser
 from src.models.room.AbstractRoom import AbstractRoom
 from src.models.booking.AbstractBooking import AbstractBooking
 
@@ -39,8 +38,7 @@ class AbstractHotel(database.Model):
             if  r.isAvailableFor(start,end):
                 available_rooms.append(r)
         return available_rooms
-    
-    def book(user: AbstractUser, room: AbstractRoom,start,end):
+    def book(user, room: AbstractRoom,start,end):
         room.bookFor(user,start,end)
     def getPrice(self,room: AbstractRoom,start: date,end:date,extra: Amenities) -> float:
 

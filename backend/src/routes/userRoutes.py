@@ -46,8 +46,6 @@ def dummy():
     print(req["token"])
     x = userServices.validate_customer(req["token"])
     return str(x)
-=======
-        935e93fd4d28e24501bd8cb0cd7
 
 @app.route("/<user_id>/delete", methods=["DELETE"])
 def delete_user(user_id):

@@ -1,4 +1,5 @@
 from typing import List
+from src.models.user.ModelUser import ModelUser
 from src.db import db
 import jwt
 
@@ -19,7 +20,9 @@ def validate_manager(token):
     try: 
         print(token)
         data= jwt.decode(token,"CMPE202PROJ",algorithms="HS256")
-        return data["type"]=="manager"
+        if not data["type"]=="manager":
+            return False
+        return ModelUser.query.filter_by(email=data["username"]).first()
     except:
         return False
 
@@ -37,7 +40,9 @@ def add_user(user_data):
             city=user_data['city'], 
             zip=user_data['zip'], 
             state=user_data['state'], 
-            country=user_data['country']
+            country=user_data['country'],
+            layalty_points=user_data["layaltyPoints"],
+            type = user_data["type"]
     )
     db.session.add(user)
     db.session.commit()

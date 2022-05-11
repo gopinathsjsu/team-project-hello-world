@@ -16,7 +16,7 @@ class AbstractUser(ABC):
             'state': user.state,
             'country': user.country,
             'zip': user.zip,
-            'loyalty_points': user.loyalty_points
+            'layalty_points': user.layalty_points
             }
         return user_dict
 
