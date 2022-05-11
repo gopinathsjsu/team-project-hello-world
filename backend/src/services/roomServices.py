@@ -1,3 +1,4 @@
+from src.models.user.ModelUser import ModelUser
 from  src.db import db
 from src.models.hotel.ModelHotel import ModelHotel
 from src.models.room.ModelRoom import ModelRoom, RoomType
@@ -32,3 +33,10 @@ def room_available(room_id,start,end):
     room = ModelRoom.query.get(room_id)
 
     return room.isAvailableFor(start,end)
+
+def book_room(room_id,user_id,start,end):
+    
+    user=ModelUser.query.get(user_id)
+    room = ModelRoom.query.get(room_id)
+
+    room.bookFor(user,start,end)
