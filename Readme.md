@@ -50,6 +50,14 @@ Jayem : Frontend and Backend
 
 Pratyush : Frontend and Backend
 
-Ishan : 
+Ishan : Backend and Front end
 
-Prithvi : Backend, Integration, Documentation
+Prithvi : Frontend, Backend, Documentation
+
+## DataBase Design 
+
+![Architecture Diagram Prithvi](https://user-images.githubusercontent.com/58871002/167961654-384c5cce-9a99-4029-a325-0cbfe2e617ed.png)
+
+## Deployment Diagram
+
+![Architecture Diagram Prithvi](https://user-images.githubusercontent.com/58871002/167961623-13b70651-f8f5-47bd-b4a8-6511259284dd.png)
