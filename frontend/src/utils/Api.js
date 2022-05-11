@@ -8,7 +8,7 @@ export async function post({ endpoint, body }) {
   } catch (error) {
     return {
       status: error.response.data.status,
-      meesage: error.response,
+      message: error.response,
     };
   }
 }
@@ -20,7 +20,19 @@ export async function get({ endpoint, params }) {
   } catch (error) {
     return {
       status: 500,
-      meesage: error.toString(),
+      message: error.toString(),
     };
+  }
+}
+
+export async function delete_req({endpoint, body}) {
+  try {
+    const response = await axios.delete(`${API_BASE_URL}/${endpoint}`, body);
+    return response;
+  } catch(error) {
+    return {
+      status: 500,
+      message: error.toString()
+    }
   }
 }

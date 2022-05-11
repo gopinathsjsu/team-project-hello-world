@@ -2,7 +2,7 @@ import Register from "./components/RegisterPage/Register";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import FindReservations from "./components/ManageReservations/FindReservations";
 import BookHotel from "./components/BookHotels/BookHotel";
-import MyReservations from "./components/MyReservations/MyReservations";
+import MyBookings from "./components/MyReservations/MyBookings";
 import DisplayHotels from "./components/DisplayHotels/DisplayHotels";
 import UserProfile from "./components/UserProfile/UserProfile";
 import LoginPage from "./components/LoginPage/Login";
@@ -17,7 +17,7 @@ function App() {
     <Router>
       <NavigationBar />
 
-      <div className="App">
+      <div className="App" style={{backgroundColor:"rgba(60, 60, 60, 0.3)"}}>
         <Switch>
           <Route exact path="/">
             <BookHotel />
@@ -28,7 +28,7 @@ function App() {
           <Route exact path="/login">
             <LoginPage />
           </Route>
-          <Route path="/reservations">
+          <Route path="/bookings">
             <FindReservations />
           </Route>
           <Route
@@ -37,7 +37,7 @@ function App() {
             render={(props) => <UserProfile {...props} />}
           ></Route>
           <Route exact path="/booking">
-            <MyReservations />
+            <MyBookings />
           </Route>
           <Route exact path="/displayhotels">
             <DisplayHotels />
@@ -46,7 +46,7 @@ function App() {
             <SingleHotelDetails />
           </Route>
           <Route exact path="/booking">
-            <MyReservations />
+            <MyBookings />
           </Route>
           <Route exact path="/userInfo">
             <UserDetails />
