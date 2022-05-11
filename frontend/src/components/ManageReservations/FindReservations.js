@@ -6,14 +6,18 @@ const FindReservations = () => {
       style={{
         display: "flex",
         flexDirection: "column",
-        height: "90vh",
-        paddingTop: "100px",
+        height: "35vh",
+        marginTop: "100px",
+        paddingTop: "150px",
+        width: "40%",
+        marginLeft: "30%",
+        // paddingLeft: "-20px",
         background: "#e8effa",
       }}
     >
       <div
         className="book-hotels-form"
-        style={{ fontSize: "2rem", color: "purple", textAlign: "center" }}
+        style={{ fontSize: "2rem", color: "purple", textAlign: "center", marginTop: "-50px", marginLeft:"-5px" }}
       >
         Search Booking
       </div>
@@ -23,7 +27,7 @@ const FindReservations = () => {
             display: "flex",
             width: "100vw",
             justifyContent: "center",
-            margin: "20px",
+            margin: "20px 20px 20px -570px",
           }}
         >
           <div>

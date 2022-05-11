@@ -29,17 +29,27 @@ def home_route():
 def get_rooms(hotel_id):
     print(hotelServices.get_rooms(hotel_id))
 
-@hotel.route("/<hotel_id>/change_information",methods=["PUT"])
+@hotel.route("/<hotel_id>",methods=["PUT","GET"])
 def change_information(hotel_id):
-    
-    req = request.get_json()
 
-    information = hotel.query.filter_by(id=req['id'])
+    if request.method == "PUT":
     
-    information.data = {'name': req['name'] if 'name' in req else information.data['name'],
-        'location': req['location'] if 'location' in req else information.data['location'],  
-        'rooms': req['rooms'] if 'rooms' in req else information.data['rooms'], 
-        'room_type': req['room_type'] if 'room_type' in req else information.data['room_type'], 
-        'owner_id': req['owner_id'] if 'owner_id' in req else information.data['owner_id']}
+        req = request.get_json()
+        
+        information = ModelHotel.query.filter_by(id=req['id']).first()
+        
+        information.name = req['name'] if 'name' in req else information.name
+        information.location = req['location'] if 'location' in req else information.location
+        information.owner_id = req['owner_id'] if 'owner_id' in req else information.owner_id
+
+        db.session.commit()
+
+        return "Done"
     
-    db.session.commit()
+    elif request.method == "GET":
+
+        information = ModelHotel.query.filter_by(id=req['id']).first()
+
+        output = {'name': information.name, 'location': information.location, 'rooms': information.rooms, 'room_type': information.room_type, 'owner_id': information.owner_id}
+
+        return output
