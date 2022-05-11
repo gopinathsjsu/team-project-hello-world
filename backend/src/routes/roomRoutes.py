@@ -1,7 +1,6 @@
 from crypt import methods
 import imp
 import json
-from requests import request
 from flask import Blueprint
 from flask import request,jsonify
 from src.routes.hotelRoutes import get_rooms
