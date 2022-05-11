@@ -9,7 +9,6 @@ from src import app
 from flask_cors import CORS, cross_origin
 
 user = Blueprint("user", __name__, url_prefix='/user')
-CORS(app, resources={r"/*": {"origins": "*"}})
 
 @user.route("/<user_id>",methods=["GET"])
 @cross_origin() 
@@ -71,6 +70,6 @@ def cancel_booking():
         AbstractUser.cancel_booking(data["booking_id"])
         return "Booking cancelled"
 
-@app.route("/user/getBooking/<user_id>")
+@user.route("/user/getBooking/<user_id>")
 def get_by_user(user_id):
     return jsonify(list(map(lambda x: x.as_dict(),ModelBooking.query.filter_by(user_id=user_id).all())))
