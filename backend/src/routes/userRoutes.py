@@ -1,5 +1,5 @@
 from crypt import methods
-from flask import Blueprint, request,jsonify
+from flask import Blueprint, request,jsonify,abort
 import jwt
 from src.models.booking.ModelBooking import ModelBooking
 from src.routes import bookingRoutes
@@ -28,11 +28,10 @@ def user_registration():
 
 @user.route("/login",methods=["POST"])
 def login():
-    #TODO: return whole user object
     user_data = request.get_json()
     data = userServices.login(user_data["email"],user_data["password"])
     if(data == None):
-        return "404"
+        return abort(404)
     else:
         type = str(data.type)
         token = jwt.encode({"username" : data.email,"type":str(type)},"CMPE202PROJ",algorithm="HS256")
