@@ -48,8 +48,9 @@ def change_information(hotel_id):
     
     elif request.method == "GET":
 
-        information = ModelHotel.query.filter_by(id=req['id']).first()
 
-        output = {'name': information.name, 'location': information.location, 'rooms': information.rooms, 'room_type': information.room_type, 'owner_id': information.owner_id}
+        information = ModelHotel.query.filter_by(id=hotel_id).first()
+
+        output = {'name': information.name, 'location': information.location, 'owner_id': information.owner_id}
 
         return output
