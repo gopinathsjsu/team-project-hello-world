@@ -47,7 +47,7 @@ def book_room(room_id,user_id,start,end,amenity_arr):
     room = ModelRoom.query.get(room_id)
     print(room.hotel)
     
-    prev = None
+    prev = Amenities(0)
     for a in amenity_arr:
         amenity = Amenity.query.filter_by(hotel_id=room.hotel.id,name = a).first()
         if(amenity != None):
