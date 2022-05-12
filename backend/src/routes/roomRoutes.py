@@ -61,7 +61,7 @@ def get_room_types(hotel_id):
         ans = {}
         count = 0
         for r in roomType.rooms:
-            if r.isAvailableFor(parser.parse(request.args["start"]),parser.parse(request.args["end"])):
+            if r.isAvailableFor(parser.parse(request.args["start"]).replace(tzinfo=None),parser.parse(request.args["end"]).replace(tzinfo=None)):
                 count+=1
         if(count > 0):
             ans[roomType.name] = {"count":count, "price":roomType.base_price}

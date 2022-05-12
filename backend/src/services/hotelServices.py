@@ -9,14 +9,13 @@ def get_hotels(**kwargs):
 
 
      print("location" in kwargs)
-     if "location" in kwargs.keys():
+     if "location" in kwargs.keys() and kwargs["location"] != "":
           hotels = ModelHotel.query.filter_by(location=kwargs["location"]).all()
      else:
           hotels = ModelHotel.query.filter_by().all()
-     print(hotels)
      return list(filter(
           lambda h : h.isAvailableFor(start=parser.parse(kwargs["start"]),end=parser.parse(kwargs["end"])) 
-          if ("start" in kwargs.keys()) and ("end" in kwargs.keys())
+          if ("start" in kwargs.keys()) and ("end" in kwargs.keys()) and (kwargs["start"] != "") and (kwargs["end"] != "")
           else True
           ,hotels))
 
