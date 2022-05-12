@@ -69,7 +69,7 @@ Prithvi : Frontend, Backend, Documentation
 
 # Feedback
 * Feed Back is important in the project developement as it will portray the to honest estimates, help identify the potential hurdles and map the progess of the project.
-*		We have realised early in our sprint meetings that feedback plays a very important role to understand different perspectives and do what is best for the project.
+*	We have realised early in our sprint meetings that feedback plays a very important role to understand different perspectives and do what is best for the project.
 *	We have assured ech other that we will dedicatedly listen to what other's have to say and accept all feedback and healthy critisisism positively.
 *	We have dedicated 5 minute feedback session at the end of each sprint meeting to check and monitor the progress of each teammate and any correction that needs to be addressed
 *	Feedback helped us in identifying the roadblocks, improve and perform better.
