@@ -88,7 +88,7 @@ Prithvi : Frontend, Backend, Documentation
 *	Every teammate has the freedom to propose a new feature, express their point of view and prespectives without the fear of recieving harsh criticism from 
 teammates 
 
-## UI Wireframes 
+### UI Wireframes 
 
 # Sign Up
 
