@@ -7,6 +7,7 @@ const App = lazy(() => import('../App'));
 const Login = lazy(() => import("../pages/auth/Login"));
 const Register = lazy(() => import("../pages/auth/Signup"));
 const Hotels = lazy(() => import("../pages/home/HotelList"));
+const Hotel = lazy(() => import("../pages/hotel/hotel"));
 
 /**
  * @component Path 
@@ -25,6 +26,7 @@ export const Path = () => {
     { path: "/login", element: <Login /> },
     { path: "/register", element: <Register /> },
     { path: "/hotels", element: <Hotels /> },
+    { path: "/hotel/:hotelid", element: <Hotel />, exact: true },
     { path: "*", element: <h1>Not Found!</h1> }
   ]
 
