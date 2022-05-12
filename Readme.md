@@ -9,7 +9,8 @@
 ### Steps to run Backend  
 1. Inside backend folder, run `pipenv install`
 2. Run: `pipenv shell`
-3. Go to: src/models/ and make a folder for each of the modules For refrence see hotel folder.
+3. `export FLASK_APP=src`
+4. `flask run`
 
 
 ## Tools and Languages:
@@ -58,8 +59,8 @@ Prithvi : Frontend, Backend, Documentation
 # XP Core Values that were Implemented during the project developement  
 
 ## Communication
-*	Communication has been an important element that our team has followed throughout the project. We have scheduled a weekly sprint meeting on Friday 10:30 PDT. Our team has followed hybrid strategy to set up meetings, we have met in person in MLK Library rooms and also used Zoom, GoogleMeets for online sprint meetings.
-*	We have used Whatsapp as our main source of communication. It became extremely easy for teh team to get and give updates to each other and put forward the concerns and most importantly having a platform to address our concerns has benefited the team with the easy execution of tasks.
+*	Communication has been an important element that our team has followed throughout the project. We have scheduled a weekly sprint meeting on Friday 10:30 PDT. Our team has followed hybrid strategy to set up meetings, we have met in person in MLK Library rooms and also used Zoom, Google Meet for online sprint meetings.
+*	We have used Whatsapp as our main source of communication. It became extremely easy for the team to get and give updates to each other and put forward the concerns and most importantly having a platform to address our concerns has benefited the team with the easy execution of tasks.
 *	In the weekly sprints we monitored and identified our progress and blockers. We discussed in detail regarding any concerns or difficulties the teammates are facing. Our key goal was to help eachother to resolve any blockages and to set up a cumculative agenda for the coming week.
 
 ## Simplicity
