@@ -88,10 +88,19 @@ teammates
 
 ## UI Wireframes 
 
+![Screenshot 2022-05-11 at 6 41 25 PM](https://user-images.githubusercontent.com/58871002/167978029-d76d5517-bc80-4044-960f-c1b06ff96e83.png)
+
+![WhatsApp Image 2022-05-11 at 6 42 33 PM](https://user-images.githubusercontent.com/58871002/167978541-b5550a5c-fc84-4b09-8271-16ea8881ac84.jpeg)
+
+![WhatsApp Image 2022-05-11 at 6 43 05 PM](https://user-images.githubusercontent.com/58871002/167978599-ab35357e-5727-4224-b4fc-f276ef87ef68.jpeg)
+
+![WhatsApp Image 2022-05-11 at 6 47 06 PM](https://user-images.githubusercontent.com/58871002/167978660-e990fbf2-5632-47d1-8ecb-699e3804290e.jpeg)
+
+
+
 
 ## DataBase Design 
 ![Architecture Diagram](https://user-images.githubusercontent.com/58871002/167961800-7036d739-03ec-4eab-ac77-ffb224fb0089.png)
-
 
 ## Deployment Diagram
 
