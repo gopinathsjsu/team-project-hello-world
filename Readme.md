@@ -104,6 +104,14 @@ teammates
 
 ![WhatsApp Image 2022-05-11 at 6 47 06 PM](https://user-images.githubusercontent.com/58871002/167978660-e990fbf2-5632-47d1-8ecb-699e3804290e.jpeg)
 
+# Admin Booking
+
+![Screenshot 2022-05-11 at 7 34 14 PM](https://user-images.githubusercontent.com/58871002/167980408-c53d6cd5-0ed7-489c-be12-e8397f54e07e.png)
+
+# Admin Board
+
+![Screenshot 2022-05-11 at 7 35 30 PM](https://user-images.githubusercontent.com/58871002/167980452-2006aa73-28f9-464a-851b-077f06a5354e.png)
+
 
 
 ## DataBase Design 
