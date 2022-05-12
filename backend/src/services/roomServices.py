@@ -1,4 +1,5 @@
 from datetime import datetime
+from src.models.hotel.AbstractHotel import Amenities
 from src.models.user.ModelUser import ModelUser
 from  src.db import db
 from src.models.hotel.ModelHotel import ModelHotel
@@ -39,5 +40,8 @@ def book_room(room_id,user_id,start,end):
     
     user=ModelUser.query.get(user_id)
     room = ModelRoom.query.get(room_id)
-
-    room.bookFor(user,start,end)
+    print(room.hotel)
+    c = Amenities(60,)
+    b = Amenities(50,c)
+    a = Amenities(40,b)
+    user.book_hotel(room,start,end,a,room.hotel)

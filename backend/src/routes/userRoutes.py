@@ -30,14 +30,14 @@ def login():
     user_data = request.get_json()
     data = userServices.login(user_data["email"],user_data["password"])
     if(data == None):
-        return abort(404,"You have enterted invalid email or password")
+        return jsonify({"message": "You have enterted invalid email or password"}), 404
     else:
         type = str(data.type)
         token = jwt.encode({"username" : data.email,"type":str(type)},"CMPE202PROJ",algorithm="HS256")
         send_val = data.as_dict()
-        print(send_val)
         send_val["type"] = type
         resp = {"response":{"user" : send_val},"token":token}
+        print(resp)
         return resp
 
 @user.route("/dummy",methods=["POST"])
@@ -70,6 +70,6 @@ def cancel_booking():
         AbstractUser.cancel_booking(data["booking_id"])
         return "Booking cancelled"
 
-@user.route("/user/getBooking/<user_id>")
+@user.route("/getBooking/<user_id>")
 def get_by_user(user_id):
     return jsonify(list(map(lambda x: x.as_dict(),ModelBooking.query.filter_by(user_id=user_id).all())))

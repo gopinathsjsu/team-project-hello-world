@@ -5,13 +5,19 @@ from src.models.booking.ModelBooking import ModelBooking
 from src.models.user.ModelUser import ModelUser
 
 booking = Blueprint("booking", __name__, url_prefix='/booking')
-#TODO: Don't let book for more than 7 days
 @booking.route("/",methods=["GET"])
 def get():
     #TODO: change this to get user from JWT Tokens
     user = ModelUser.query.first()
-
-    return jsonify(list(map(lambda x: x.as_dict(),ModelBooking.query.filter_by(user_id=user.id).all())))
+    
+    def helper(booking):
+        ret_val = booking.as_dict()
+        ret_val["username"] = user.first_name + " " + user.last_name
+        ret_val["hotelname"] = booking.room.hotel.name
+        ret_val["status"] = "booked"
+        ret_val["type"] = booking.room.type.name
+        return ret_val
+    return jsonify(list(map(helper,ModelBooking.query.filter_by(user_id=user.id).all())))
 
 @booking.route("/<room_id>",methods=["GET"])
 def get_by_room(room_id):
