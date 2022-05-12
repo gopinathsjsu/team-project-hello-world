@@ -38,7 +38,7 @@ Prithvi Raj
 
 ## Scrum Meetings Schedule:
 
-Friday 10:30 pm PST
+Friday 7:30 pm PST
 
 ## Feature Set
 
@@ -58,7 +58,7 @@ Prithvi : Frontend, Backend, Documentation
 
 ## Communication
 
-- Communication has been an important element that our team has followed throughout the project. We have scheduled a weekly sprint meeting on Friday 10:30 PDT. Our team has followed hybrid strategy to set up meetings, we have met in person in MLK Library rooms and also used Zoom, Google Meet for online sprint meetings.
+- Communication has been an important element that our team has followed throughout the project. We have scheduled a weekly sprint meeting on Friday 7:30 PST. Our team has followed hybrid strategy to set up meetings, we have met in person in MLK Library rooms and also used Zoom, Google Meet for online sprint meetings.
 - We have used Whatsapp as our main source of communication. It became extremely easy for the team to get and give updates to each other and put forward the concerns and most importantly having a platform to address our concerns has benefited the team with the easy execution of tasks.
 - In the weekly sprints we monitored and identified our progress and blockers. We discussed in detail regarding any concerns or difficulties the teammates are facing. Our key goal was to help eachother to resolve any blockages and to set up a cumculative agenda for the coming week.
 
@@ -125,3 +125,7 @@ Prithvi : Frontend, Backend, Documentation
 ## Deployment Diagram
 
 ![Architecture Diagram Prithvi](https://user-images.githubusercontent.com/58871002/167961623-13b70651-f8f5-47bd-b4a8-6511259284dd.png)
+
+## Use Case Diagram
+![Usename Prithvi](https://user-images.githubusercontent.com/58871002/167992670-99014631-0466-479d-982c-df8d9cb393dc.png)
+

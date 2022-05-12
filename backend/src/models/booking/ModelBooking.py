@@ -8,8 +8,8 @@ class ModelBooking(AbstractBooking):
     end_date =  database.Column(database.DateTime)
     price = database.Column(database.Float)
     room_id = database.Column(database.Integer, database.ForeignKey('room.id'),nullable=False)
-    user_id = database.Column(database.Integer, database.ForeignKey('user.id'),nullable=False)
-
+    user_id = database.Column(database.Integer, database.ForeignKey('user.id'),)
+    amenities= database.Column(database.JSON)
     def __init__(self,**kwargs) -> None:
         super().__init__(**kwargs)
     def as_dict(self):

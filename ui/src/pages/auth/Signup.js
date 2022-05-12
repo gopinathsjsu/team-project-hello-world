@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import getLinks from '../../common/helper/links';
 import API from '../../common/helper/api';
-import { useHistory } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Signup() {
     let links = getLinks();
-    let history = useHistory();
+
     const [signupError, setSignupError] = useState(null);
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
         first_name: '',
         last_name: '',
@@ -33,7 +34,8 @@ function Signup() {
             callBack: (res) => {
                 if (res.status) {
                     setSignupError(null);
-                    history.push({ pathname: '/login' });
+                    
+                    navigate('/login');
                 }
                 else {
                     setSignupError(res.message);

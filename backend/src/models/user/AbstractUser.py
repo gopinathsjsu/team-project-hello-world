@@ -51,7 +51,7 @@ class AbstractUser(db.Model):
     def book_hotel(self,room, start, end,Amenities,hotel):
         from src.models.hotel.AbstractHotel import AbstractHotel
 
-        hotel.book(self,room, start, end, Amenities=Amenities)
+        return hotel.book(self,room, start, end, Amenities=Amenities)
 
 
     def cancel_booking(booking_id):

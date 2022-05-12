@@ -46,6 +46,7 @@ class AbstractHotel(database.Model):
         room.bookings.append(b)
         database.session.add(b)
         database.session.commit()
+        return b
         
     def getPrice(self,room: AbstractRoom,start: date,end:date,extra: Amenities) -> float:
 
