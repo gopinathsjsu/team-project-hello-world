@@ -20,6 +20,7 @@ def home_route():
     request.args.get("end", default=None, type=str)
 
     if request.method == "GET":
+        print(request.headers["Authorization"])
         args= request.args.to_dict()
         return jsonify(list(map(lambda x: x.as_dict(), hotelServices.get_hotels(**args))))
     if request.method == "POST":
