@@ -25,9 +25,6 @@ def get():
         req = request.args.to_dict()
 
         data = ModelBooking.query.filter_by(id = req['booking_id']).first()
-        print("start")
-        print(data)
-        print("end")
         data.status = 'cancelled'
         db.session.commit()
         return "done"
