@@ -6,6 +6,9 @@ from  src.db import db
 from src.models.hotel.ModelHotel import ModelHotel
 from src.models.room.ModelRoom import ModelRoom, RoomType
 from flask import jsonify
+DATE_FORMAT =  "%Y-%m-%dT%H:%M:%S"
+from dateutil import parser
+
 
 
 def add_room(hotel_id,room_type_id,name):
@@ -36,7 +39,7 @@ def get_room_types(hotel_id):
 def room_available(room_id,start,end):
     room = ModelRoom.query.get(room_id)
 
-    return room.isAvailableFor(datetime.strptime(start,"%Y/%m/%d"),datetime.strptime(end,"%Y/%m/%d"))
+    return room.isAvailableFor(parser.parse(start),datetime.parser.parse(end))
 
 def book_room(room_id,user_id,start,end,amenity_arr):
     
@@ -44,7 +47,7 @@ def book_room(room_id,user_id,start,end,amenity_arr):
     room = ModelRoom.query.get(room_id)
     print(room.hotel)
     
-    prev = None
+    prev = Amenities(0)
     for a in amenity_arr:
         amenity = Amenity.query.filter_by(hotel_id=room.hotel.id,name = a).first()
         if(amenity != None):
@@ -55,3 +58,22 @@ def book_room(room_id,user_id,start,end,amenity_arr):
     db.session.add(booking)
     db.session.commit()
     return booking.as_dict()
+
+def book_by_room_type(type_id,no_of_bookings,start,end,amenity_list):
+    #TODO: change this to get user from JWT Tokens
+    user = ModelUser.query.first()
+    rooms = RoomType.query.get(type_id).rooms
+    
+    prev = None
+    for a in amenity_list:
+        amenity = Amenity.query.filter_by(hotel_id=rooms[0].hotel.id,name = a).first()
+        if(amenity != None):
+            prev = Amenities(amenity.price,prev)
+
+    for room in rooms:
+
+        if room.isAvailableFor(parser.parse(start),parser.parse(end)):
+            user.book_hotel(room, parser.parse(start),parser.parse(end),prev,room.hotel)
+
+    return "True"
+

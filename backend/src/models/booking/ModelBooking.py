@@ -10,6 +10,7 @@ class ModelBooking(AbstractBooking):
     room_id = database.Column(database.Integer, database.ForeignKey('room.id'),nullable=False)
     user_id = database.Column(database.Integer, database.ForeignKey('user.id'),)
     amenities= database.Column(database.JSON)
+    status = database.Column(database.String(32))
     def __init__(self,**kwargs) -> None:
         super().__init__(**kwargs)
     def as_dict(self):

@@ -11,8 +11,12 @@ from src.models.room.ModelRoom import ModelRoom, RoomType
 from src.models.hotel.ModelHotel import ModelHotel
 from src.services import roomServices
 from src.db import db
+from dateutil import parser
+
 room = Blueprint("room", __name__, url_prefix='/room')
 room_type = Blueprint("room_type", __name__, url_prefix='/roomType')
+
+DATE_FORMAT =  "%Y-%m-%dT%H:%M:%S"
 #TODO: Get All available rooms for hotels
 @room.route("/<hotel_id>",methods=["GET","POST"])
 def get_home(hotel_id):
@@ -37,14 +41,14 @@ def book_room(room_id):
         req = request.get_json()
         #TODO: change this to get user from JWT Tokens
         user = ModelUser.query.first()
-        #try:
-        if datetime.strptime(req["start"],"%Y/%m/%d") < datetime.now(): return "start date in the past"
-        elif datetime.strptime(req["end"],"%Y/%m/%d") < datetime.now(): return "end date in the past"
-        elif (datetime.strptime(req["end"],"%Y/%m/%d") - datetime.strptime(req["start"],"%Y/%m/%d")).days > 7: return "more than 7 days of booking not allowed" 
-        elif (datetime.strptime(req["end"],"%Y/%m/%d") - datetime.strptime(req["start"],"%Y/%m/%d")).days < 1: return "Please book atleast 1 day"
-        return roomServices.book_room(room_id,user.id,datetime.strptime(req["start"],"%Y/%m/%d"),datetime.strptime(req["end"],"%Y/%m/%d"),req["Amenities"])
-        #except:
-        #    return jsonify({"message": "Cannot book the room. Some error has occoured"}), 500
+        try:
+            if parser.parse(req["start"]) < datetime.now(): return "start date in the past"
+            elif parser.parse(req["end"]) < datetime.now(): return "end date in the past"
+            elif (parser.parse(req["end"]) - parser.parse(req["start"])).days > 7: return "more than 7 days of booking not allowed" 
+            elif (parser.parse(req["end"]) - parser.parse(req["start"])).days < 1: return "Please book atleast 1 day"
+            return roomServices.book_room(room_id,user.id,parser.parse(req["start"]),parser.parse(req["end"]),req["Amenities"])
+        except:
+           return jsonify({"message": "Cannot book the room. Some error has occoured"}), 500
 
 
 
@@ -57,7 +61,7 @@ def get_room_types(hotel_id):
         ans = {}
         count = 0
         for r in roomType.rooms:
-            if r.isAvailableFor(datetime.strptime(request.args["start"],"%Y/%m/%d"),datetime.strptime(request.args["end"],"%Y/%m/%d")):
+            if r.isAvailableFor(parser.parse(request.args["start"]),parser.parse(request.args["end"])):
                 count+=1
         if(count > 0):
             ans[roomType.name] = {"count":count, "price":roomType.base_price}
@@ -70,7 +74,14 @@ def get_room_types(hotel_id):
             roomtype = roomServices.add_room_type(hotel_id,req["name"],req["base_price"])
             return json.dumps(roomtype.as_dict())
 
-
+@room_type.route("book",methods=["POST"])
+def book_room_type():
+    req = request.get_json()
+    if parser.parse(req["start"]) < datetime.now(): return "start date in the past"
+    elif parser.parse(req["end"]) < datetime.now(): return "end date in the past"
+    elif (parser.parse(req["end"]) - parser.parse(req["start"])).days > 7: return "more than 7 days of booking not allowed" 
+    elif (parser.parse(req["end"]) - parser.parse(req["start"])).days < 1: return "Please book atleast 1 day"
+    return roomServices.book_by_room_type(req["room_type"],req["no_of_rooms"],req["start"],req["end"],req["amenities"])
 
 
 
