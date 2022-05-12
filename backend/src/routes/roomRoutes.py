@@ -60,7 +60,7 @@ def get_room_types(hotel_id):
             if r.isAvailableFor(datetime.strptime(request.args["start"],"%Y/%m/%d"),datetime.strptime(request.args["end"],"%Y/%m/%d")):
                 count+=1
         if(count > 0):
-            ans[roomType.name] = count
+            ans[roomType.name] = {"count":count, "price":roomType.base_price}
         return ans
         
     if request.method == "GET":
