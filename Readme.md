@@ -105,7 +105,9 @@ teammates
 ![WhatsApp Image 2022-05-11 at 6 47 06 PM](https://user-images.githubusercontent.com/58871002/167978660-e990fbf2-5632-47d1-8ecb-699e3804290e.jpeg)
 
 
+
 ## DataBase Design 
+
 ![Architecture Diagram](https://user-images.githubusercontent.com/58871002/167961800-7036d739-03ec-4eab-ac77-ffb224fb0089.png)
 
 ## Deployment Diagram
