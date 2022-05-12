@@ -5,7 +5,6 @@ from src.models.booking.ModelBooking import ModelBooking
 from src.models.user.ModelUser import ModelUser
 
 booking = Blueprint("booking", __name__, url_prefix='/booking')
-#TODO: Don't let book for more than 7 days
 @booking.route("/",methods=["GET"])
 def get():
     #TODO: change this to get user from JWT Tokens
