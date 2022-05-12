@@ -38,7 +38,7 @@ Prithvi Raj
 
 ## Scrum Meetings Schedule:
 
-Friday 7:30 pm PST
+Monday 7:30 pm PST
 
 ## Feature Set
 
@@ -50,9 +50,9 @@ Jayem : Frontend and Backend
 
 Pratyush : Frontend and Backend
 
-Ishan : Backend and Front end
+Ishan : Frontend and Backend
 
-Prithvi : Frontend, Backend, Documentation
+Prithvi : Frontend and Backend
 
 # XP Core Values that were Implemented during the project developement
 
