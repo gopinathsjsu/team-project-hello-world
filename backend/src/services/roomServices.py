@@ -64,14 +64,15 @@ def book_by_room_type(type_id,no_of_bookings,start,end,amenity_list):
     user = ModelUser.query.first()
     rooms = RoomType.query.get(type_id).rooms
     
-    prev = None
+    prev = Amenities(0)
     for a in amenity_list:
         amenity = Amenity.query.filter_by(hotel_id=rooms[0].hotel.id,name = a).first()
         if(amenity != None):
             prev = Amenities(amenity.price,prev)
 
+    
     for room in rooms:
-
+        print(room)
         if room.isAvailableFor(parser.parse(start).replace(tzinfo=None),parser.parse(end).replace(tzinfo=None)):
             user.book_hotel(room, parser.parse(start).replace(tzinfo=None),parser.parse(end).replace(tzinfo=None),prev,room.hotel)
 
