@@ -1,10 +1,12 @@
 import React, { lazy, Suspense } from "react";
 import { useRoutes } from "react-router-dom";
+import Navbar from '../common/components/Navbar';
 
 // Path
 const App = lazy(() => import('../App'));
 const Login = lazy(() => import("../pages/auth/Login"));
 const Register = lazy(() => import("../pages/auth/Signup"));
+const Hotels = lazy(() => import("../pages/home/HotelList"));
 
 /**
  * @component Path 
@@ -20,17 +22,19 @@ export const Path = () => {
    */
   const element = [
     { path: "/", element: <App />, index: true },
-    { path: "/login", element: <Login />},
-    { path: "/register", element: <Register />},
+    { path: "/login", element: <Login /> },
+    { path: "/register", element: <Register /> },
+    { path: "/hotels", element: <Hotels /> },
     { path: "*", element: <h1>Not Found!</h1> }
-]
+  ]
 
   const routes = useRoutes(element);
-  return(
+  return (
     <React.Fragment>
-        <Suspense fallback={<div>Loading..</div>}>
-          {routes}
-        </Suspense>
+      <Navbar />
+      <Suspense fallback={<div>Loading..</div>}>
+        {routes}
+      </Suspense>
     </React.Fragment>
   )
 }
