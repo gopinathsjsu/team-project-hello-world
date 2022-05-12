@@ -16,6 +16,12 @@ class ModelHotel(AbstractHotel):
     room_types = database.relationship('RoomType', backref='hotel')
     owner_id  =  database.Column(database.Integer, database.ForeignKey('user.id'),nullable=False)
     
+
+    def isAvailableFor(self,start,end):
+        for r in self.rooms:
+            if(r.isAvailableFor(start,end)):
+                return True
+        return False
     
     def as_dict(self):
        return {c.name: getattr(self, c.name) for c in self.__table__.columns}
