@@ -1,8 +1,9 @@
 from abc import ABC, abstractmethod
+from src.models.hotel.AbstractHotel import Amenities
 from src.services import userServices
-
-class AbstractUser(ABC):
-
+from src.db import db
+class AbstractUser(db.Model):
+    __abstract__ = True
     def get_user_details(user_id):
         user = userServices.get_user_details(user_id)
         user_dict = {
@@ -47,10 +48,10 @@ class AbstractUser(ABC):
         hotels = AbstractHotel.getAvailibilityOn(start, end, location)
         return hotels
 
-    def book_hotel(room, start, end):
-        from src.models.booking.AbstractBooking import AbstractBooking
+    def book_hotel(self,room, start, end,Amenities,hotel):
+        from src.models.hotel.AbstractHotel import AbstractHotel
 
-        AbstractBooking.book(room, start, end)
+        return hotel.book(self,room, start, end, Amenities=Amenities)
 
 
     def cancel_booking(booking_id):

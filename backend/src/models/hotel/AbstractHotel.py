@@ -1,3 +1,4 @@
+from src.models.booking.ModelBooking import ModelBooking
 from src.models.room.AbstractRoom import AbstractRoom
 from src.models.booking.AbstractBooking import AbstractBooking
 
@@ -38,8 +39,15 @@ class AbstractHotel(database.Model):
             if  r.isAvailableFor(start,end):
                 available_rooms.append(r)
         return available_rooms
-    def book(user, room: AbstractRoom,start,end):
-        room.bookFor(user,start,end)
+    def book(self,user, room: AbstractRoom,start,end,Amenities:Amenities):
+
+        total_price = self.getPrice(room,start,end,Amenities)
+        b = ModelBooking(start_date=start,end_date=end,room=room,user=user,price=total_price)
+        room.bookings.append(b)
+        database.session.add(b)
+        database.session.commit()
+        return b
+        
     def getPrice(self,room: AbstractRoom,start: date,end:date,extra: Amenities) -> float:
 
         return room.getPrice() + self.getHolidayPricing(start,end) + extra.get_price()

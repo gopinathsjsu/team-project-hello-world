@@ -1,8 +1,11 @@
 from datetime import datetime
+from src.models.booking.Amenity import Amenity
+from src.models.hotel.AbstractHotel import Amenities
 from src.models.user.ModelUser import ModelUser
 from  src.db import db
 from src.models.hotel.ModelHotel import ModelHotel
 from src.models.room.ModelRoom import ModelRoom, RoomType
+from flask import jsonify
 
 
 def add_room(hotel_id,room_type_id,name):
@@ -35,9 +38,20 @@ def room_available(room_id,start,end):
 
     return room.isAvailableFor(datetime.strptime(start,"%Y/%m/%d"),datetime.strptime(end,"%Y/%m/%d"))
 
-def book_room(room_id,user_id,start,end):
+def book_room(room_id,user_id,start,end,amenity_arr):
     
     user=ModelUser.query.get(user_id)
     room = ModelRoom.query.get(room_id)
-
-    room.bookFor(user,start,end)
+    print(room.hotel)
+    
+    prev = None
+    for a in amenity_arr:
+        amenity = Amenity.query.filter_by(hotel_id=room.hotel.id,name = a).first()
+        if(amenity != None):
+            prev = Amenities(amenity.price,prev)
+    
+    booking = user.book_hotel(room,start,end,prev,room.hotel)
+    booking.amenities = amenity_arr
+    db.session.add(booking)
+    db.session.commit()
+    return booking.as_dict()

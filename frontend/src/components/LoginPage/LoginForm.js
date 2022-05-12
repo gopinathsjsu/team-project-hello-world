@@ -18,9 +18,9 @@ const LoginForm = () => {
     const response = await post({ endpoint: "user/login", body: values });
     if (response.status === 200 || response.status === 201) {
       // TODO: Write code for successful login redirection
-      localStorage.setItem("user", JSON.stringify(response.data));
-      localStorage.setItem("token", JSON.stringify(response.data.token))
-      setUserProfile(response.data);
+      localStorage.setItem("user", JSON.stringify(response.data.response.user));
+      localStorage.setItem("token", JSON.stringify(response.data.response.token))
+      setUserProfile(response.data.response.user);
       console.log("Login Response", response.data);
       history.go("/register");
     } else {
@@ -80,7 +80,7 @@ const LoginForm = () => {
                 className="signin-submit-button"
                 value="Login"
               ></input>
-              <button onClick={(e) => goToRegister(e)}>Sign Up</button>
+              {/* <button onClick={(e) => goToRegister(e)}>Sign Up</button> */}
             </div>
           </form>
           {error !== "" && <p className="#error">{error}</p>}

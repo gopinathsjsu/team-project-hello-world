@@ -7,18 +7,19 @@ function NavBar() {
   const history = useHistory();
   const [userDetails, setUserDetails] = useState();
 
-  // useEffect(() => {
-  //   setInterval(() => {
-  //     const user = localStorage.getItem("user");
-  //     if ( user !== undefined && user !== null){
-  //       setUserDetails(JSON.parse(user));
-  //     }
-  //   }, 500);
-  // }, []);
+  useEffect(() => {
+    setInterval(() => {
+      const user = localStorage.getItem("user");
+      if ( user !== undefined && user !== null){
+        setUserDetails(JSON.parse(user));
+      }
+    }, 500);
+  }, []);
 
   const logoutClicked = (e) => {
     e.preventDefault();
     localStorage.removeItem("user");
+    localStorage.removeItem("token");
     setUserDetails(null);
     history.replace("/");
   };
@@ -51,7 +52,7 @@ function NavBar() {
               Home
             </Nav.Link>
             <Nav.Link
-              href="/reservations"
+              href="/bookings"
               style={{ color: "white", marginRight: "2rem" }}
             >
               Find Booking

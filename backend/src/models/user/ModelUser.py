@@ -1,5 +1,6 @@
 
 import enum
+from src.models.hotel.AbstractHotel import AbstractHotel
 from src.models.booking.AbstractBooking import AbstractBooking
 from src.models.user.AbstractUser import AbstractUser
 from abc import ABC
@@ -15,7 +16,7 @@ class UserType(enum.Enum):
         return self.value
 
     
-class ModelUser(db.Model):
+class ModelUser(AbstractUser):
 
     __tablename__ = "user"
 
