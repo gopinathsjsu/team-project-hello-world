@@ -70,11 +70,20 @@ def book_by_room_type(type_id,no_of_bookings,start,end,amenity_list):
         if(amenity != None):
             prev = Amenities(amenity.price,prev)
 
-    
+    no_of_bookings = int(no_of_bookings)
+    count = 0
     for room in rooms:
-        print(room)
+        if room.isAvailableFor(parser.parse(start).replace(tzinfo=None),parser.parse(end).replace(tzinfo=None)):
+            count +=1
+
+    if(count < no_of_bookings): return "Not that many available rooms"
+    for room in rooms:
+        if(no_of_bookings <= 0):
+            break
+
         if room.isAvailableFor(parser.parse(start).replace(tzinfo=None),parser.parse(end).replace(tzinfo=None)):
             user.book_hotel(room, parser.parse(start).replace(tzinfo=None),parser.parse(end).replace(tzinfo=None),prev,room.hotel)
-
+            no_of_bookings-=1
+    if(no_of_bookings > 0):return "False"
     return "True"
 
