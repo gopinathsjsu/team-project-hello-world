@@ -65,7 +65,7 @@ Prithvi : Frontend, Backend, Documentation
 *	The main goal here is to avoid wastage of resources and time while we do only absolutely necessary tasks, this was acheived by keeping the design model of the project as simple as possible so that it is easier to maintain, support, and revise.
 *	To implement simplicity in our project we have divided the research tasks, shared knowledge and have supported each others proposals with respect.
 *	We have worked on gathering the apt requirements and comprehending the definition of the project, followed a simple moto "to do only what is needed".
-*	Actively working on avoiding duplications helped us keep our code easy to maintain as we added more APIs and corresponding UI elements.
+*	We have aggresively worked and communicated with each otehr to avoid any duplications in tasks and code. This startegy has helped us fastrack our progress and concentrate more on new set of functionaities.
 
 # Feedback
 * Feed Back is important in the project developement as it will portray the to honest estimates, help identify the potential hurdles and map the progess of the project.
