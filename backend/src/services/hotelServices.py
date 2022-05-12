@@ -8,12 +8,12 @@ def get_hotels(**kwargs):
 
      print("location" in kwargs)
      if "location" in kwargs.keys():
-          hotels = ModelHotel.query.filter_by(kwargs["location"]).all()
+          hotels = ModelHotel.query.filter_by(location=kwargs["location"]).all()
      else:
           hotels = ModelHotel.query.filter_by().all()
      print(hotels)
      return list(filter(
-          lambda h : h.isAvailableFor(datetime.strptime(kwargs["start"],"%Y/%m/%d"),datetime.strptime(kwargs["start"],"%Y/%m/%d")) 
+          lambda h : h.isAvailableFor(start=datetime.strptime(kwargs["start"],"%Y/%m/%d"),end=datetime.strptime(kwargs["end"],"%Y/%m/%d")) 
           if ("start" in kwargs.keys()) and ("end" in kwargs.keys())
           else True
           ,hotels))

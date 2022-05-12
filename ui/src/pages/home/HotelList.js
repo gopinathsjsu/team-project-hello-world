@@ -5,10 +5,11 @@ import SearchBarHotels from "./SearchBarHotels";
 export default function HotelList() {
 	const [hotels, setHotels] = useState([])
 	const [formData, setFormDate] = useState({
-		inputCity: '',
-		startDate: new Date(),
-		endDate: new Date()
+		location: '',
+		start: new Date(),
+		end: new Date()
 	})
+	
 
 	return (
 		<div className="container">

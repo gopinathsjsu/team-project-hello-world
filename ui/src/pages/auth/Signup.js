@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import getLinks from "../../common/helper/links";
 import API from "../../common/helper/api";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "../../styles/Login.css";
 function Signup() {
   let links = getLinks();
@@ -28,7 +28,7 @@ function Signup() {
     let body = { ...formData };
 
     API({
-      callURL: links.login,
+      callURL: links.register,
       callMethod: "POST",
       bodyData: body,
       callBack: (res) => {
@@ -264,7 +264,7 @@ function Signup() {
                     <button type="submit" className="btn btn-primary">
                       Sign Up
                     </button>
-                    <a href="/login">Login</a>
+                    <Link to="/login">Login</Link>
                   </div>
                 </div>
               </div>

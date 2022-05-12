@@ -62,18 +62,18 @@ export default function SearchBarHotels(props) {
 						id="inputCity"
 						placeholder="Search By City"
 						value={props.formData.inputCity}
-						onChange={((e) => props.setFormDate({ ...props.formData, inputCity: e.target.value }))}
+						onChange={((e) => props.setFormDate({ ...props.formData, location: e.target.value }))}
 					/>
 				</div>
 				<div className="col-md-6">
 					<div className="row date-container">
 						<div className="col-md-3">
 							<label className="form-label">Start Date</label>
-							<DatePicker selected={props.formData.startDate} onChange={(date) => props.setFormDate({ ...props.formData, startDate: date })} />
+							<DatePicker selected={props.formData.startDate} onChange={(date) => props.setFormDate({ ...props.formData, startDate: new Date(date) })} />
 						</div>
 						<div className="col-md-3">
 							<label className="form-label">End Date</label>
-							<DatePicker selected={props.formData.endDate} onChange={(date) => props.setFormDate({ ...props.formData, endDate: date })} />
+							<DatePicker selected={props.formData.endDate} onChange={(date) => props.setFormDate({ ...props.formData, endDate: new Date(date) })} />
 						</div>
 					</div>
 				</div>

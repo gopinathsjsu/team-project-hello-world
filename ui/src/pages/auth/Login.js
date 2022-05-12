@@ -101,7 +101,7 @@ function Login() {
                 </div>
                 <div className="card-footer">
                   <div className="d-flex justify-content-center links">
-                    Don't have an account?<a href="/register">Sign Up</a>
+                    Don't have an account? <Link to="/register">Register</Link>
                   </div>
                 </div>
               </div>
