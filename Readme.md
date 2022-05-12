@@ -88,7 +88,6 @@ teammates
 
 ## UI Wireframes 
 
-## XP Core Values
 
 ## DataBase Design 
 ![Architecture Diagram](https://user-images.githubusercontent.com/58871002/167961800-7036d739-03ec-4eab-ac77-ffb224fb0089.png)
