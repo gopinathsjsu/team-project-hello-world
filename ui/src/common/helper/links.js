@@ -7,6 +7,7 @@ const dev = {
   bookings: devURL + "booking",
 
   hotels: devURL + "hotel",
+  rooms: devURL + "roomType",
 };
 
 function getLinks() {

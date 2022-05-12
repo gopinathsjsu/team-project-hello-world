@@ -1,12 +1,37 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "../../styles/Hotel.css";
+import API from '../../common/helper/api';
+import getLinks from '../../common/helper/links';
+import { useLocation } from "react-router-dom";
+
 function Hotel(props) {
   const [roomType, setRoomType] = useState("");
   const [totalRooms, setTotalRooms] = useState(5);
   const [selectedRoomNum, setSelectedRoomNum] = useState(0);
   const [basePrice, setbasePrice] = useState(20);
+  const [roomTypes, setRoomTypes] = useState(["small", "medium", "large", "suite"]);
+  const location = useLocation();
 
-  let roomTypes = ["small", "medium", "large", "suite"];
+  console.log("DATA:")
+  console.log(location)
+  console.log(location)
+  
+  let links = getLinks();
+  useEffect(() => {
+		API({
+			callURL: links.rooms,
+			callMethod: "GET",
+			callBack: (res) => {
+				if (res.status) {
+					props.setRoomTypes(res.data);
+				}
+				else {
+					props.setRoomTypes([]);
+				}
+			}
+		})
+
+	}, [])
 
   let selectedStyle = {
     backgroundImage:
