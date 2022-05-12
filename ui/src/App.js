@@ -6,22 +6,9 @@ import Bookings from './pages/bookings/mangebooking';
 
 function App() {
     return (
-        <Router>
-            <Switch>
-                <Route path='/bookings'>
-                    <Bookings />
-                </Route>
-                <Route path='/signup'>
-                    <Signup />
-                </Route>
-                <Route path='/login'>
-                    <Login />
-                </Route>
-                <Route path='/'>
-                    <Login />
-                </Route>
-            </Switch>
-        </Router>
+        <div>
+            Hello world
+        </div>
     )
 }
 

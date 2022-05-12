@@ -1,0 +1,36 @@
+import React, { lazy, Suspense } from "react";
+import { useRoutes } from "react-router-dom";
+
+// Path
+const App = lazy(() => import('../App'));
+const Login = lazy(() => import("../pages/auth/Login"));
+const Register = lazy(() => import("../pages/auth/Signup"));
+
+/**
+ * @component Path 
+ * @description Path is component which is the central routes of the whole application. 
+ * 
+ * @returns Fragment and Suspense
+ */
+export const Path = () => {
+
+  /**
+   * Element component takes same props as what Route takes in react-router-dom
+   * in element: pass lazy elements for code splitting for code to load async.
+   */
+  const element = [
+    { path: "/", element: <App />, index: true },
+    { path: "/login", element: <Login />},
+    { path: "/register", element: <Register />},
+    { path: "*", element: <h1>Not Found!</h1> }
+]
+
+  const routes = useRoutes(element);
+  return(
+    <React.Fragment>
+        <Suspense fallback={<div>Loading..</div>}>
+          {routes}
+        </Suspense>
+    </React.Fragment>
+  )
+}
