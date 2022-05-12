@@ -18,7 +18,7 @@ Frontend - React JS
 
 Backend - Python - Flask
 
-Database - 
+Database - PostgreSQL
 
 Cloud - AWS EC2
 
