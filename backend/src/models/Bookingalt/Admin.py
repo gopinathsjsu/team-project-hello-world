@@ -85,4 +85,30 @@ class Booking(db.Model):
         self.user_id  = user_id 
         self.hotel_id = hotel_id
         self.room = room
-        self.price = price                                           
+        self.price = price           
+    @app.route('/', methods=['GET', 'POST'])
+def home():
+    """ Session control"""
+    topic = Hotel.query.all()
+    if not session.get('logged_in'):
+        topic = Hotel.query.all()
+        image="hotel.jpg" 
+        return render_template('hotel.html',topic=topic,image1=image)
+    else:
+        if request.method == 'POST':
+            username = getname(request.form['username'])
+            return render_template('hotel.html', data=getfollowedby(username))
+        return render_template('hotel.html',topic=topic)        
+
+@app.route('/booking/<int:data>', methods=['GET', 'POST'])
+def booking(data):
+    """Login Form"""
+    h_data=Hotel.query.filter(Hotel.id == data).all()
+
+    if not session.get('logged_in'):
+        topic = Hotel.query.all()
+        flash('You have to login')
+        return render_template('hotel.html',topic=topic)
+    else:    
+        data1 = Hotel.query.get_or_404(data)
+        return render_template('booking.html',h_data=h_data,data=data1.id)
