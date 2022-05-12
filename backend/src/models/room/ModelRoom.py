@@ -22,6 +22,7 @@ class RoomType(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(32),nullable=False)
     base_price = db.Column(db.Float,nullable=False)
+    rooms = database.relationship('ModelRoom')
     hotel_id = db.Column(db.Integer, db.ForeignKey('hotel.id'),
         nullable=False)
 
