@@ -1,0 +1,53 @@
+.right{
+    float: right;
+}
+
+.card-text{
+    font-size: 15px;
+    color: hsl(240deg 6% 53%);
+}
+
+.card{
+    margin: 20px;
+}
+
+.hotel-card-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.btn-hover {
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.btn-hover:hover {
+    background-position: 100% 0;
+    moz-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    -webkit-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+    background-image: linear-gradient(to right, #eb3941, #f15e64, #e14e53, #e2373f);  box-shadow: 0 5px 15px rgba(242, 97, 103, .4);
+    /* background-image: linear-gradient(to right, #25aae1, #4481eb, #04befe, #3f86ed); */
+    box-shadow: 0 4px 15px 0 rgba(65, 132, 234, 0.75);
+}
+
+.btn-hover:focus {
+    outline: none;
+}
+
+.search-bar-container{
+    margin: 20px;
+    background-color: #8080804a;
+    padding: 10px;
+}
+
+.date-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-around;
+}
