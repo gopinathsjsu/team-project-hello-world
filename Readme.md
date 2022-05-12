@@ -125,3 +125,7 @@ Prithvi : Frontend, Backend, Documentation
 ## Deployment Diagram
 
 ![Architecture Diagram Prithvi](https://user-images.githubusercontent.com/58871002/167961623-13b70651-f8f5-47bd-b4a8-6511259284dd.png)
+
+## Use Case Diagram
+![Usename Prithvi](https://user-images.githubusercontent.com/58871002/167992670-99014631-0466-479d-982c-df8d9cb393dc.png)
+
