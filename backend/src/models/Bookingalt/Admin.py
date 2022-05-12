@@ -33,3 +33,56 @@ class UseR(db.Model):
         self.email = email
         self.passwordHash = PasswordHash
         self.creativeTime = creatiVeTime
+class Admin(db.Model):
+    """ Create user table"""
+    id = db.Column(INTEGER(unsigned=True), primary_key=True)
+    username = db.Column(db.String(80), unique=True)
+    email = db.Column(db.String(80), unique=True)
+    password = db.Column(db.String(160))
+
+    def __init__(self, username,password,email):
+        self.username = username
+        self.email=email
+        self.password = password      
+class Hotel(db.Model):
+    """ Create user table"""
+    id = db.Column(INTEGER(unsigned=True), primary_key=True)
+    cities = db.Column(db.String(80))
+    capacity = db.Column(db.String(80))
+    peakseason=db.Column(db.String(80))
+    off_peakseason=db.Column(db.String(80))
+    text=db.Column(db.String(80))
+    hotelimage=db.Column(db.String(80))
+    def __init__(self,cities,capacity, peakseason,off_peakseason,text,hotelimage):
+        self.cities = cities
+        self.capacity = capacity
+        self.peakseason = peakseason
+        self.off_peakseason = off_peakseason 
+        self.text=text  
+        self.hotelimage=hotelimage
+class Room(db.Model):
+    """ Create user table"""
+    id = db.Column(INTEGER(unsigned=True), primary_key=True)
+    user_id = db.Column(INTEGER(unsigned=True))
+    hotel_id = db.Column(INTEGER(unsigned=True))
+    booking_id = db.Column(INTEGER(unsigned=True))
+    type=db.Column(INTEGER(unsigned=True))
+    IsAvailable=db.Column(db.Boolean,default=True)
+    def __init__(self,user_id ,hotel_id,booking_id,type,IsAvailable):
+        self.user_id  = user_id 
+        self.hotel_id = hotel_id
+        self.booking_id = booking_id
+        self.type = type
+        self.IsAvailable=IsAvailable        
+class Booking(db.Model):
+    """ Create user table"""
+    id = db.Column(INTEGER(unsigned=True), primary_key=True)
+    user_id = db.Column(INTEGER(unsigned=True))
+    hotel_id = db.Column(INTEGER(unsigned=True))
+    room=db.Column(INTEGER(unsigned=True))
+    price=db.Column(INTEGER(unsigned=True))
+    def __init__(self,user_id ,hotel_id, room,price):
+        self.user_id  = user_id 
+        self.hotel_id = hotel_id
+        self.room = room
+        self.price = price                                           
