@@ -1,4 +1,4 @@
-const devURL = "http://52.10.109.137/";
+const devURL = "http://127.0.0.1:5000/";
 
 const dev = {
   sign_up: devURL + "user/register",

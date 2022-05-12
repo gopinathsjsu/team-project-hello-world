@@ -21,11 +21,8 @@ export const Path = () => {
    * in element: pass lazy elements for code splitting for code to load async.
    */
 
-  const token = localStorage.getItem('user');
-
   const element = [
     { path: "/", element: <App />, index: true },
-    
     { path: "/hotels", element: <Hotels /> },
     { path: "/hotel/:hotelid", element: <Hotel />, exact: true },
     { path: "/bookings", element: <Bookings />, exact: true },

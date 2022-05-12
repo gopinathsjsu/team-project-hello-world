@@ -1,7 +1,7 @@
 import axios from 'axios';
+import useAuth from './useAuth';
 
 async function API(entity) {
-
     return axios({
         baseURL: entity.callURL,
         method: entity.callMethod,
