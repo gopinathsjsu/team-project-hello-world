@@ -25,10 +25,10 @@ const UserProfile = (props) => {
       history.go(-1);
     }
 
-    let endpoint = "user/" + JSON.parse.id + "/bookings"
+    let endpoint = "user/getBooking/" + JSON.parse(user).id
     const resp = get({endpoint: endpoint});
-
-    setUserBookings(resp);
+    console.log(resp)
+    setUserBookings(resp.userBookings);
   }, []);
 
   return (
@@ -40,11 +40,12 @@ const UserProfile = (props) => {
               boxShadow: "0 4px 8px 0 rgba(0, 0, 0, 0.3)",
             }}
           >
-            <h3 style={{ padding: "20px" }}>
+            <h2 style={{ padding: "20px" }}><b>
               <em>
-                Welcome to your profile, {userDetails.firstName} {userDetails.lastName}
+                Welcome to your profile, {userDetails.first_name} {userDetails.last_name}
               </em>
-            </h3>
+              </b>
+            </h2>
           </div>
           {/* <hr style={{ margin: "0px" }} /> */}
           <Row
@@ -58,31 +59,31 @@ const UserProfile = (props) => {
           >
             <Col>
               <Col className="miles-card" style={{ padding: "45px" }}>
-                <h4>
-                  <em>Loyalty Points</em> Member
-                </h4>
+                <h3>
+                  <b><em>Loyalty Points</em> Member</b>
+                </h3>
 
                 <div style={{ paddingTop: "30px" }}>
                   <h4>
                     <em>{userDetails.layalty_points}</em>
-                    <p>total loyalty points</p>
+                    <b>Total loyalty points</b>
                   </h4>
                 </div>
                 <div>
                   <p>
                     {`You still require ${
-                      40000 - userDetails.loyalty_points
+                      4000 - (userDetails.layalty_points ? userDetails.layalty_points : 0)
                     } to be a Prime Loyalty Member.`}
                   </p>
                 </div>
               </Col>
               <Col className="userprofile-card">
-                <h4>Profile</h4>
-                <h6>Email</h6>
+                <b><h4>Profile</h4></b>
+                <b><h6>Email</h6></b>
                 <p>{userDetails.email}</p>
-                <h6>Phone Number</h6>
-                <p>{userDetails.phoneNumber}</p>
-                <h6>Address</h6>
+                <b><h6>Phone Number</h6></b>
+                <p>{userDetails.phone_number}</p>
+                <b><h6>Address</h6></b>
                 <p>{`${userDetails.address}, ${userDetails.city}`}</p>
                 <p>{`${userDetails.state}, ${userDetails.country}, ${userDetails.zip}`}</p>
               </Col>
@@ -117,7 +118,7 @@ const UserProfile = (props) => {
                                   justifyContent: "space-between",
                                 }}
                               >
-                                <em>{`Booking Id. ${item.booking_id}`}</em>
+                                <em>{`Booking Id. ${item.id}`}</em>
                                 {isActive && (
                                   <p
                                     style={{
@@ -144,7 +145,7 @@ const UserProfile = (props) => {
                                   <Button
                                     onClick={(e) => {
                                       e.preventDefault();
-                                      history.push(`/booking/?pnr=${item.booking_id}`);
+                                      history.push(`/booking/?pnr=${item.id}`);
                                     }}
                                     style={{
                                       backgroundColor: "white",
@@ -159,7 +160,7 @@ const UserProfile = (props) => {
                                 </div>
                               </div>
                               <div>
-                                <div
+                                {/* <div
                                   style={{
                                     color: "green",
                                     textAlign: "right",
@@ -167,8 +168,8 @@ const UserProfile = (props) => {
                                       ? "line-through"
                                       : "",
                                   }}
-                                >{`+ ${item.milesEarned} miles`}</div>
-                                <div
+                                >{`+ ${item.milesEarned} points`}</div> */}
+                                {/* <div
                                   style={{
                                     color: "red",
                                     textAlign: "right",
@@ -176,7 +177,7 @@ const UserProfile = (props) => {
                                       ? "line-through"
                                       : "",
                                   }}
-                                >{`- ${item.milesUsed} miles`}</div>
+                                >{`- ${item.milesUsed} miles`}</div> */}
                               </div>
                             </Card.Body>
                           </Card>
