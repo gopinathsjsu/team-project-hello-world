@@ -1,0 +1,86 @@
+.room-type-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    padding: 20px;
+    margin-top: 5px;
+
+}
+
+.container-fluid{
+
+}
+
+.bg{
+    background-image: url('http://getwallpapers.com/wallpaper/full/a/5/d/544750.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    font-family: 'Numans', sans-serif;
+    min-height: 100%;
+    /* min-width: 1024px; */
+      
+    /* Set up proportionate scaling */
+    width: 100%;
+    height: auto;
+      
+    /* Set up positioning */
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: -3;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.book-card{
+    width: 80%;
+    margin: auto;
+    background-color: black;
+    background-color: aliceblue;
+    margin-top: 100px;
+    padding: 20px; 
+}
+
+.price-container{
+   
+    padding: 20px;
+    margin-top: 20px;
+}
+
+
+.type-btn{
+    padding: 10px;
+}
+
+.gradient-button {
+    margin: 10px;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 20px;
+    padding: 15px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    color: #FFF;
+    box-shadow: 0 0 20px #eee;
+    border-radius: 10px;
+    width: 200px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 25px;
+    background-color: #c7ccd1;  
+}
+.gradient-button:hover{
+    box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
+    margin: 8px 10px 12px;
+}
+.gradient-button-1 {
+    /* background-image: linear-gradient(to right, #DD5E89 0%, #F7BB97 51%, #DD5E89 100%) */
+}
+.gradient-button-1:hover { background-position: right center; }
+
+
