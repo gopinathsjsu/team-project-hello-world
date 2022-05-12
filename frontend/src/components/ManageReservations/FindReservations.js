@@ -1,5 +1,6 @@
 import React from "react";
 
+
 const FindReservations = () => {
   return (
     <div
@@ -12,12 +13,12 @@ const FindReservations = () => {
         width: "40%",
         marginLeft: "30%",
         // paddingLeft: "-20px",
-        background: "#e8effa",
+        // background: "#e8effa",
       }}
     >
       <div
         className="book-hotels-form"
-        style={{ fontSize: "2rem", color: "purple", textAlign: "center", marginTop: "-50px", marginLeft:"-5px" }}
+        style={{ fontSize: "2rem", color: "purple", textAlign: "center", marginTop: "-50px", marginLeft:"-5px"}}
       >
         Search Booking
       </div>

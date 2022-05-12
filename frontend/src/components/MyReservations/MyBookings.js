@@ -53,7 +53,7 @@ const MyBookings = () => {
       setIsLoggedIn(true);
     }
     const queryParams = new URLSearchParams(window.location.search);
-    const bookingId = queryParams.get("booking_id");
+    const bookingId = queryParams.get("id");
     const params = bookingId;
 
     console.log(params);
