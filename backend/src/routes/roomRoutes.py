@@ -68,7 +68,7 @@ def get_room_types(hotel_id):
         return ans
         
     if request.method == "GET":
-        return jsonify(list(map(helper,roomServices.get_room_types(hotel_id))))
+        return jsonify(list(filter(lambda x: "name" in x.keys(),list(map(helper,roomServices.get_room_types(hotel_id))))))
     elif request.method == "POST":
             req =request.get_json()
             roomtype = roomServices.add_room_type(hotel_id,req["name"],req["base_price"])
