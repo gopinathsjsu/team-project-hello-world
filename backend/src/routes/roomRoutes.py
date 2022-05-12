@@ -36,11 +36,11 @@ def book_room(room_id):
         req = request.get_json()
         #TODO: change this to get user from JWT Tokens
         user = ModelUser.query.first()
-        try:
-            roomServices.book_room(room_id,user.id,datetime.strptime(req["start"],"%Y/%m/%d"),datetime.strptime(req["end"],"%Y/%m/%d"))
-            return "Room Booked"
-        except:
-            return jsonify({"message": "Cannot book the room. Some error has occoured"}), 500
+        #try:
+        roomServices.book_room(room_id,user.id,datetime.strptime(req["start"],"%Y/%m/%d"),datetime.strptime(req["end"],"%Y/%m/%d"))
+        return "Room Booked"
+        #except:
+        #    return jsonify({"message": "Cannot book the room. Some error has occoured"}), 500
 
 
 
