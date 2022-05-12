@@ -64,11 +64,11 @@ def get_room_types(hotel_id):
             if r.isAvailableFor(parser.parse(request.args["start"]).replace(tzinfo=None),parser.parse(request.args["end"]).replace(tzinfo=None)):
                 count+=1
         if(count > 0):
-            ans[roomType.name] = {"count":count, "price":roomType.base_price}
+            ans = {"name":roomType.name,"id":roomType.id,"count":count, "price":roomType.base_price}
         return ans
         
     if request.method == "GET":
-        return jsonify(list(map(helper,roomServices.get_room_types(hotel_id))))
+        return jsonify(list(filter(lambda x: "name" in x.keys(),list(map(helper,roomServices.get_room_types(hotel_id))))))
     elif request.method == "POST":
             req =request.get_json()
             roomtype = roomServices.add_room_type(hotel_id,req["name"],req["base_price"])
@@ -77,10 +77,10 @@ def get_room_types(hotel_id):
 @room_type.route("book",methods=["POST"])
 def book_room_type():
     req = request.get_json()
-    if parser.parse(req["start"]) < datetime.now(): return "start date in the past"
-    elif parser.parse(req["end"]) < datetime.now(): return "end date in the past"
-    elif (parser.parse(req["end"]) - parser.parse(req["start"])).days > 7: return "more than 7 days of booking not allowed" 
-    elif (parser.parse(req["end"]) - parser.parse(req["start"])).days < 1: return "Please book atleast 1 day"
+    if parser.parse(req["start"]).replace(tzinfo=None) < datetime.now(): return "start date in the past"
+    elif parser.parse(req["end"]).replace(tzinfo=None) < datetime.now(): return "end date in the past"
+    elif (parser.parse(req["end"]).replace(tzinfo=None) - parser.parse(req["start"]).replace(tzinfo=None)).days > 7: return "more than 7 days of booking not allowed" 
+    elif (parser.parse(req["end"]).replace(tzinfo=None) - parser.parse(req["start"]).replace(tzinfo=None)).days < 1: return "Please book atleast 1 day"
     return roomServices.book_by_room_type(req["room_type"],req["no_of_rooms"],req["start"],req["end"],req["amenities"])
 
 

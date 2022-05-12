@@ -1,13 +1,13 @@
 import axios from 'axios';
+import useAuth from './useAuth';
 
 async function API(entity) {
-
     return axios({
         baseURL: entity.callURL,
         method: entity.callMethod,
         data: entity.bodyData,
         params: { ...entity.urlParams },
-        // headers: { ...entity.headers }
+        headers: { ...entity.headers }
     }).then((res) => {
         let data = { ...res, status: true }
 

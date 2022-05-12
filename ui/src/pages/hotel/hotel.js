@@ -2,37 +2,21 @@ import React, { useState, useEffect } from "react";
 import "../../styles/Hotel.css";
 import API from '../../common/helper/api';
 import getLinks from '../../common/helper/links';
-import { useLocation } from "react-router-dom";
 
+import {useLocation, useParams} from "react-router-dom"
 function Hotel(props) {
   const [roomType, setRoomType] = useState("");
   const [totalRooms, setTotalRooms] = useState(5);
   const [selectedRoomNum, setSelectedRoomNum] = useState(0);
   const [basePrice, setbasePrice] = useState(20);
-  const [roomTypes, setRoomTypes] = useState(["small", "medium", "large", "suite"]);
-  const location = useLocation();
+  const [roomId,setRoomId] = useState(-1)
+  const [roomTypes,setRoomTypes] = useState(["small", "medium"])
+  const location = useLocation()
 
-  console.log("DATA:")
+  let links = getLinks()
+  console.log("data:")
   console.log(location)
-  console.log(location)
-  
-  let links = getLinks();
-  useEffect(() => {
-		API({
-			callURL: links.rooms,
-			callMethod: "GET",
-			callBack: (res) => {
-				if (res.status) {
-					props.setRoomTypes(res.data);
-				}
-				else {
-					props.setRoomTypes([]);
-				}
-			}
-		})
-
-	}, [])
-
+  console.log("end")
   let selectedStyle = {
     backgroundImage:
       "linear-gradient(to right, #DD5E89 0%, #F7BB97 51%, #DD5E89 100%)",
@@ -40,7 +24,62 @@ function Hotel(props) {
   console.log(selectedRoomNum);
 
   const calculateTotalPrice = () => basePrice * selectedRoomNum;
+  const { hotelid } = useParams();
+  const onBook = (e) =>{
+    e.preventDefault();
+    console.log({
+      "start":location.state.startDate,
+      "end":location.state.endDate,
+      "room_type":roomId,
+      "no_of_rooms":selectedRoomNum,
+      "amenities": [],
+    })
+    API({
+			callURL: links.book,
+      bodyData: {
+              "start":location.state.startDate,
+              "end":location.state.endDate,
+              "room_type":roomId,
+              "no_of_rooms":selectedRoomNum,
+              "amenities": [],
+            },
+			callMethod: "POST",
+			callBack: (res) => {
+				if (res.status) {
+          alert("booked")
+					console.log("done")
+				}
+				else {
+					console.log(res)
+				}
+			}
+		})
 
+  }
+  useEffect(() => {
+    //let params = location.state
+    console.log("HERE!!!!!!")
+    let params = {
+      "start": location.state.startDate,
+      "end": location.state.endDate
+    }
+    console.log(params)
+
+		API({
+			callURL: links.rooms + `${hotelid}`,
+      urlParams: params,
+			callMethod: "GET",
+			callBack: (res) => {
+				if (res.status) {
+					setRoomTypes(res.data)
+				}
+				else {
+					
+				}
+			}
+		})
+
+	}, [])
   return (
     <div className="container">
       <div className="bg">
@@ -49,18 +88,24 @@ function Hotel(props) {
             <h1 className="mt-5">Select Room Type </h1>
             <hr></hr>
             <div className="room-type-container">
-              {roomTypes.map((room, key) => {
+              {
+              roomTypes.map((room, key) => {
+                console.log("type:")
+                console.log(room)
                 return (
                   <button
                     onClick={(e) => {
                       setRoomType(e.target.value);
+                      setbasePrice(room.price);
+                      setTotalRooms(room.count+1)
+                      setRoomId(room.id)
                     }}
-                    style={roomType == room ? selectedStyle : null}
+                    style={roomType == room.name ? selectedStyle : null}
                     className="type-btn gradient-button gradient-button-1"
-                    value={room}
+                    value={room.name}
                   >
                     {" "}
-                    {room}
+                    {room.name}
                   </button>
                 );
               })}
@@ -113,7 +158,7 @@ function Hotel(props) {
                   </span>
 
                   <div className="col-sm-12 col-lg-3 mt-3">
-                    <button className="btn btn-primary"> Book Now</button>
+                    <button className="btn btn-primary" onClick={(e) => onBook(e)}> Book Now</button>
                   </div>
                 </div>
               </div>

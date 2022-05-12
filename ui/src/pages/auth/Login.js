@@ -26,8 +26,7 @@ function Login() {
       callBack: (res) => {
         console.log("Helllo")
         if (res.status) {
-          localStorage.setItem("user", JSON.stringify(res.data.response.user));
-          localStorage.setItem("token", JSON.stringify(res.data.token));
+          localStorage.setItem("user", JSON.stringify({user: res.data.response.user, token: res.data.token }));
           console.log("HERE!!!")
           navigate("/hotels");
         } else {

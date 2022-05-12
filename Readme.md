@@ -38,7 +38,7 @@ Prithvi Raj
 
 ## Scrum Meetings Schedule:
 
-Friday 7:30 pm PST
+Monday 7:30 pm PST
 
 ## Feature Set
 
@@ -46,13 +46,13 @@ Friday 7:30 pm PST
 
 ## Work Distribution
 
-Jayem : Frontend and Backend
+Jayam : Backend (the hotels model), Database design, Frontend (Hotel booking flow), API integration and testing
 
-Pratyush : Frontend and Backend
+Pratyush : Backend (the users model), Database design, Frontend (Registrations and login flow). API integration and testing
 
-Ishan : Backend and Front end
+Ishan : Backend (the rooms model), Database design, Frontend (Styling and CSS). API integration and testing
 
-Prithvi : Frontend, Backend, Documentation
+Prithvi : Backend (the booking model), Database design, Front end (UI Wireframes and design), API integration and testing.
 
 # XP Core Values that were Implemented during the project developement
 
