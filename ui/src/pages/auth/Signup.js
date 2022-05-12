@@ -1,6 +1,12 @@
 import React, { useState } from 'react';
+import getLinks from '../../common/helper/links';
+import API from '../../common/helper/api';
+import { useHistory } from 'react-router-dom';
 
 function Signup() {
+    let links = getLinks();
+    let history = useHistory();
+    const [signupError, setSignupError] = useState(null);
     const [formData, setFormData] = useState({
         first_name: '',
         last_name: '',
@@ -19,7 +25,22 @@ function Signup() {
         e.preventDefault();
 
         let body = { ...formData };
-        console.log(body);
+
+        API({
+            callURL: links.login,
+            callMethod: "POST",
+            bodyData: body,
+            callBack: (res) => {
+                if (res.status) {
+                    setSignupError(null);
+                    history.push({ pathname: '/login' });
+                }
+                else {
+                    setSignupError(res.message);
+                }
+
+            }
+        })
     }
 
     return (
@@ -62,6 +83,9 @@ function Signup() {
                     <input type="text" className="form-control" id="country" value={formData.country} onChange={(e) => setFormData({ ...formData, country: e.target.value })} />
                 </div>
 
+                {signupError !== null && <p>
+                    <font color='red'>{signupError}</font>
+                </p>}
                 <button type="submit" className="btn btn-primary">Sign Up</button>
                 <a href='/login'>
                     Login
