@@ -3,7 +3,7 @@ import "../../styles/Hotel.css";
 import API from '../../common/helper/api';
 import getLinks from '../../common/helper/links';
 
-import {useLocation} from "react-router-dom"
+import {useLocation, useParams} from "react-router-dom"
 function Hotel(props) {
   const [roomType, setRoomType] = useState("");
   const [totalRooms, setTotalRooms] = useState(5);
@@ -24,7 +24,7 @@ function Hotel(props) {
   console.log(selectedRoomNum);
 
   const calculateTotalPrice = () => basePrice * selectedRoomNum;
-
+  const { hotelid } = useParams();
   const onBook = (e) =>{
     e.preventDefault();
     console.log({
@@ -66,7 +66,7 @@ function Hotel(props) {
     console.log(params)
 
 		API({
-			callURL: links.rooms + "/2",
+			callURL: links.rooms + `${hotelid}`,
       urlParams: params,
 			callMethod: "GET",
 			callBack: (res) => {

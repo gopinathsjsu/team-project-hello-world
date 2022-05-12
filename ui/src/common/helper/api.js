@@ -7,7 +7,7 @@ async function API(entity) {
         method: entity.callMethod,
         data: entity.bodyData,
         params: { ...entity.urlParams },
-        // headers: { ...entity.headers }
+        headers: { ...entity.headers }
     }).then((res) => {
         let data = { ...res, status: true }
 

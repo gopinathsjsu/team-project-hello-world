@@ -20,13 +20,17 @@ export const Path = () => {
    * Element component takes same props as what Route takes in react-router-dom
    * in element: pass lazy elements for code splitting for code to load async.
    */
+
+  const token = localStorage.getItem('user');
+
   const element = [
     { path: "/", element: <App />, index: true },
-    { path: "/login", element: <Login /> },
-    { path: "/register", element: <Register /> },
+    
     { path: "/hotels", element: <Hotels /> },
     { path: "/hotel/:hotelid", element: <Hotel />, exact: true },
     { path: "/bookings", element: <Bookings />, exact: true },
+    { path: "/login", element: <Login /> },
+    { path: "/register", element: <Register /> },
     { path: "*", element: <h1>Not Found!</h1> },
   ];
 

@@ -7,10 +7,15 @@ function Bookings() {
     let links = getLinks();
     const [bookings, setBookings] = useState([])
 
+    const token = localStorage.getItem("user");
+
     useEffect(() => {
         API({
             callURL: links.bookings,
             callMethod: "GET",
+            headers: {
+                'Authorization': `Bearer ${token}`
+            },
             callBack: (res) => {
                 if (res.status) {
                     setBookings(res.data);
