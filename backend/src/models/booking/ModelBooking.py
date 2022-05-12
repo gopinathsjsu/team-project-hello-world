@@ -6,6 +6,7 @@ class ModelBooking(AbstractBooking):
     id = database.Column(database.Integer, primary_key=True)
     start_date =  database.Column(database.DateTime)
     end_date =  database.Column(database.DateTime)
+    price = database.Column(database.Float)
     room_id = database.Column(database.Integer, database.ForeignKey('room.id'),nullable=False)
     user_id = database.Column(database.Integer, database.ForeignKey('user.id'),nullable=False)
 

@@ -38,9 +38,9 @@ def book_room(room_id):
         user = ModelUser.query.first()
         try:
             roomServices.book_room(room_id,user.id,datetime.strptime(req["start"],"%Y/%m/%d"),datetime.strptime(req["end"],"%Y/%m/%d"))
-            return "Done!!"
+            return "Room Booked"
         except:
-            abort(404)
+            return jsonify({"message": "Cannot book the room. Some error has occoured"}), 500
 
 
 
