@@ -75,12 +75,14 @@ Prithvi : Frontend, Backend, Documentation
 *	Feedback helped us in identifying the roadblocks, improve and perform better.
 
 # Courage
+
 *	It was essential to stay courageous to face the hurdles we have come across throughout the project development
 *	We aapreciate ourself to be courageous enough to give and take critisism in a respectful and positive way.
 *	It helped the team overall as we have been courages enough to take a step and call out any critical issues during the building of various functionalities.
 *	Team members had the courage to speak up, ask for help and be vulnerable.
 
 # Respect
+
 *	We have assured each other dignity and respect at any given point of the project.
 *	We truly cared of each other's well being and their work.
 *	Every teammate has the freedom to propose a new feature, express their point of view and prespectives without the fear of recieving harsh criticism from 
