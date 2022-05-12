@@ -18,7 +18,7 @@
 
 Frontend - React JS
 
-Backend - Python - Flask - SQLAlchemy
+Backend - Python - Flask
 
 Database - PostgreSQL
 
@@ -28,7 +28,7 @@ Cloud - AWS EC2
 
 ## Team Members
 
-Jayam Thaker
+Jayem Thakar
 
 Pratyush Sharma
 
@@ -46,15 +46,13 @@ Monday 7:30 pm PST
 
 ## Work Distribution
 
-Frontend: Pratyush Sharma, Prithvi Raj, Jayam Thaker, Ishan Malkan
+Jayam : Backend (the hotels model), Database design, Frontend (Hotel booking flow), API integration and testing
 
-Backend: Pratyush Sharma, Prithvi Raj, Jayam Thaker, Ishan Malkan
+Pratyush : Backend (the users model), Database design, Frontend (Registrations and login flow). API integration and testing
 
-Project documentation and Deployment diagrams: Pratyush Sharma, Prithvi Raj, Jayam Thaker, Ishan Malkan
+Ishan : Backend (the rooms model), Database design, Frontend (Styling and CSS). API integration and testing
 
-UML diagrams: Pratyush Sharma, Prithvi Raj, Jayam Thaker, Ishan Malkan
-
-Deployment: Pratyush Sharma, Prithvi Raj, Jayam Thaker, Ishan Malkan
+Prithvi : Backend (the booking model), Database design, Front end (UI Wireframes and design), API integration and testing.
 
 # XP Core Values that were Implemented during the project developement
 
