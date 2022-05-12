@@ -101,26 +101,12 @@ function Login() {
                 </div>
                 <div className="card-footer">
                   <div className="d-flex justify-content-center links">
-                    Don't have an account?<a href="/signup">Sign Up</a>
+                    Don't have an account?<a href="/register">Sign Up</a>
                   </div>
                 </div>
               </div>
             </div>
           </div>
-
-          {/* <div classNameName="mb-3">
-                    <label classNameName="form-label">Email address</label>
-                    <input type="email" classNameName="form-control" id="email" value={formData.email} onChange={(e) => setFormData({ ...formData, email: e.target.value })} />
-                </div>
-                <div classNameName="mb-3">
-                    <label classNameName="form-label">Password</label>
-                    <input type="password" classNameName="form-control" id="password" value={formData.password} onChange={(e) => setFormData({ ...formData, password: e.target.value })} />
-                </div>
-
-                <button type="submit" classNameName="btn btn-primary">Login</button>
-                <NavLink to='/signup'>
-                    Register
-                </NavLink> */}
         </form>
       </div>
     </div>
