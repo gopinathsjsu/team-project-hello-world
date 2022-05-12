@@ -1,0 +1,13 @@
+.card{
+    margin: 20px;
+    padding: 10px;
+    background-color: aliceblue;
+}
+
+.cancel-btn{
+    width: 100%;
+}
+
+.info-container{
+    padding: 20px;
+}
