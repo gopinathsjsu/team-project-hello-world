@@ -20,6 +20,8 @@ Backend - Python - Flask
 
 Database - PostgreSQL
 
+REST API: Postman (for testing developed APIs)
+
 Cloud - AWS EC2
 
 
