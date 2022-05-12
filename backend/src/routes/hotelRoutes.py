@@ -20,11 +20,8 @@ def home_route():
     request.args.get("end", default=None, type=str)
 
     if request.method == "GET":
-        if userServices.validate_customer(print(request.headers["Authorization"])):
-            args= request.args.to_dict()
-            return jsonify(list(map(lambda x: x.as_dict(), hotelServices.get_hotels(**args))))
-        else:
-            return jsonify({"message": "You have enterted invalid email or password"}), 404
+        args= request.args.to_dict()
+        return jsonify(list(map(lambda x: x.as_dict(), hotelServices.get_hotels(**args))))
     if request.method == "POST":
         req =request.get_json()
         if(userServices.validate_manager(req["token"]) != False):
