@@ -37,6 +37,10 @@ def book_room(room_id):
         #TODO: change this to get user from JWT Tokens
         user = ModelUser.query.first()
         #try:
+        if datetime.strptime(req["start"],"%Y/%m/%d") < datetime.now(): return "start date in the past"
+        elif datetime.strptime(req["end"],"%Y/%m/%d") < datetime.now(): return "end date in the past"
+        elif (datetime.strptime(req["end"],"%Y/%m/%d") - datetime.strptime(req["start"],"%Y/%m/%d")).days > 7: return "more than 7 days of booking not allowed" 
+        elif (datetime.strptime(req["end"],"%Y/%m/%d") - datetime.strptime(req["start"],"%Y/%m/%d")).days < 1: return "Please book atleast 1 day"
         roomServices.book_room(room_id,user.id,datetime.strptime(req["start"],"%Y/%m/%d"),datetime.strptime(req["end"],"%Y/%m/%d"))
         return "Room Booked"
         #except:
