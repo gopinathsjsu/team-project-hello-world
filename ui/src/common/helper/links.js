@@ -4,7 +4,7 @@ const dev = {
     sign_up: devURL + "user/register",
     login: devURL + "user/login",
 
-    get_bookings: devURL + 'booking'
+    bookings: devURL + 'booking'
 }
 
 function getLinks() {

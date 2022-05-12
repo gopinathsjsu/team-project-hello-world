@@ -24,7 +24,7 @@ function Login() {
                 if (res.status) {
                     localStorage.setItem("user", JSON.stringify(res.data.response.user));
                     localStorage.setItem("token", JSON.stringify(res.data.token));
-                    // history.push({ pathname: '/hotels' });
+                    history.push({ pathname: '/hotels' });
                 }
                 else {
                     setLoginError(res.message);

@@ -9,7 +9,7 @@ function Bookings() {
 
     useEffect(() => {
         API({
-            callURL: links.get_bookings,
+            callURL: links.bookings,
             callMethod: "GET",
             callBack: (res) => {
                 if (res.status) {
