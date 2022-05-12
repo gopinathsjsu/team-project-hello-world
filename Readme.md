@@ -18,7 +18,7 @@
 
 Frontend - React JS
 
-Backend - Python - Flask
+Backend - Python - Flask - SQLAlchemy
 
 Database - PostgreSQL
 
@@ -28,7 +28,7 @@ Cloud - AWS EC2
 
 ## Team Members
 
-Jayem Thakar
+Jayam Thaker
 
 Pratyush Sharma
 
@@ -46,13 +46,15 @@ Monday 7:30 pm PST
 
 ## Work Distribution
 
-Jayem : Frontend and Backend
+Frontend: Pratyush Sharma, Prithvi Raj, Jayam Thaker, Ishan Malkan
 
-Pratyush : Frontend and Backend
+Backend: Pratyush Sharma, Prithvi Raj, Jayam Thaker, Ishan Malkan
 
-Ishan : Frontend and Backend
+Project documentation and Deployment diagrams: Pratyush Sharma, Prithvi Raj, Jayam Thaker, Ishan Malkan
 
-Prithvi : Frontend and Backend
+UML diagrams: Pratyush Sharma, Prithvi Raj, Jayam Thaker, Ishan Malkan
+
+Deployment: Pratyush Sharma, Prithvi Raj, Jayam Thaker, Ishan Malkan
 
 # XP Core Values that were Implemented during the project developement
 
