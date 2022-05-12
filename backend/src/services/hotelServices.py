@@ -2,18 +2,20 @@ from datetime import datetime
 from src.models.hotel.ModelHotel import ModelHotel
 from src.db import db
 from sqlalchemy.orm import joinedload
+DATE_FORMAT =  "%Y-%m-%dT%H:%M:%S"
+from dateutil import parser
 
 def get_hotels(**kwargs):
 
 
      print("location" in kwargs)
      if "location" in kwargs.keys():
-          hotels = ModelHotel.query.filter_by(kwargs["location"]).all()
+          hotels = ModelHotel.query.filter_by(location=kwargs["location"]).all()
      else:
           hotels = ModelHotel.query.filter_by().all()
      print(hotels)
      return list(filter(
-          lambda h : h.isAvailableFor(datetime.strptime(kwargs["start"],"%Y/%m/%d"),datetime.strptime(kwargs["start"],"%Y/%m/%d")) 
+          lambda h : h.isAvailableFor(start=parser.parse(kwargs["start"]),end=parser.parse(kwargs["start"])) 
           if ("start" in kwargs.keys()) and ("end" in kwargs.keys())
           else True
           ,hotels))

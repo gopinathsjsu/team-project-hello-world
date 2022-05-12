@@ -42,7 +42,7 @@ class AbstractHotel(database.Model):
     def book(self,user, room: AbstractRoom,start,end,Amenities:Amenities):
 
         total_price = self.getPrice(room,start,end,Amenities)
-        b = ModelBooking(start_date=start,end_date=end,room=room,user=user,price=total_price)
+        b = ModelBooking(start_date=start,end_date=end,room=room,user=user,price=total_price,status='booked')
         room.bookings.append(b)
         database.session.add(b)
         database.session.commit()

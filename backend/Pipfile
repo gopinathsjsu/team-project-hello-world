@@ -10,6 +10,7 @@ python-dotenv = "*"
 pyjwt = "*"
 flask-cors = "*"
 psycopg2 = "*"
+python-dateutil = "*"
 
 [dev-packages]
 
