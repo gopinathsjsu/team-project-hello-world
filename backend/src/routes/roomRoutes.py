@@ -2,6 +2,7 @@ from crypt import methods
 from datetime import datetime
 import imp
 import json
+import re
 from flask import Blueprint
 from flask import request,jsonify,abort
 from src.models.user.ModelUser import ModelUser
@@ -49,8 +50,21 @@ def book_room(room_id):
 
 @room_type.route("/<hotel_id>",methods=["GET","POST"])
 def get_room_types(hotel_id):
+    request.args.get("start", default=None, type=str)
+    request.args.get("end", default=None, type=str)
+
+    def helper(roomType):
+        ans = {}
+        count = 0
+        for r in roomType.rooms:
+            if r.isAvailableFor(datetime.strptime(request.args["start"],"%Y/%m/%d"),datetime.strptime(request.args["end"],"%Y/%m/%d")):
+                count+=1
+        if(count > 0):
+            ans[roomType.name] = count
+        return ans
+        
     if request.method == "GET":
-        return jsonify(list(map(lambda x: x.as_dict(),roomServices.get_room_types(hotel_id))))
+        return jsonify(list(map(helper,roomServices.get_room_types(hotel_id))))
     elif request.method == "POST":
             req =request.get_json()
             roomtype = roomServices.add_room_type(hotel_id,req["name"],req["base_price"])
