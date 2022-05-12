@@ -32,7 +32,7 @@ export default function SearchBarHotels(props) {
 	function search(e) {
 		e.preventDefault();
 		let params = { ...props.formData }
-
+		console.log(params)
 		API({
 			callURL: links.hotels,
 			callMethod: "GET",
@@ -62,18 +62,18 @@ export default function SearchBarHotels(props) {
 						id="inputCity"
 						placeholder="Search By City"
 						value={props.formData.inputCity}
-						onChange={((e) => props.setFormDate({ ...props.formData, inputCity: e.target.value }))}
+						onChange={((e) => props.setFormDate({ ...props.formData, location: e.target.value }))}
 					/>
 				</div>
 				<div className="col-md-6">
 					<div className="row date-container">
 						<div className="col-md-3">
 							<label className="form-label">Start Date</label>
-							<DatePicker selected={props.formData.startDate} onChange={(date) => props.setFormDate({ ...props.formData, startDate: date })} />
+							<DatePicker valueDefault={null} selected={props.formData.start} onChange={(date) =>{return props.setFormDate({ ...props.formData, start: (date === null ? null:new Date(date)) })}} />
 						</div>
 						<div className="col-md-3">
 							<label className="form-label">End Date</label>
-							<DatePicker selected={props.formData.endDate} onChange={(date) => props.setFormDate({ ...props.formData, endDate: date })} />
+							<DatePicker valueDefault={null} selected={props.formData.end} onChange={(date) =>{return props.setFormDate({ ...props.formData, end: (date === null ? null:new Date(date)) })}} />
 						</div>
 					</div>
 				</div>

@@ -15,7 +15,7 @@ def get_hotels(**kwargs):
           hotels = ModelHotel.query.filter_by().all()
      print(hotels)
      return list(filter(
-          lambda h : h.isAvailableFor(start=parser.parse(kwargs["start"]),end=parser.parse(kwargs["start"])) 
+          lambda h : h.isAvailableFor(start=parser.parse(kwargs["start"]),end=parser.parse(kwargs["end"])) 
           if ("start" in kwargs.keys()) and ("end" in kwargs.keys())
           else True
           ,hotels))
