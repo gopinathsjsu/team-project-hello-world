@@ -19,7 +19,7 @@ export default function HotelList() {
 					{
 						hotels.length === 0 ? <>Oops No hotel to show</> :
 							hotels.map((item, index) => (
-								<HotelCard key={index} detail={item} startDate={formData.startDate} endDate={formData.endDate} />
+								<HotelCard key={index} detail={item} startDate={formData.start} endDate={formData.end} />
 							))
 					}
 				</div>

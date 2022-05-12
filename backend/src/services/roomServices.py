@@ -72,8 +72,8 @@ def book_by_room_type(type_id,no_of_bookings,start,end,amenity_list):
 
     for room in rooms:
 
-        if room.isAvailableFor(parser.parse(start),parser.parse(end)):
-            user.book_hotel(room, parser.parse(start),parser.parse(end),prev,room.hotel)
+        if room.isAvailableFor(parser.parse(start).replace(tzinfo=None),parser.parse(end).replace(tzinfo=None)):
+            user.book_hotel(room, parser.parse(start).replace(tzinfo=None),parser.parse(end).replace(tzinfo=None),prev,room.hotel)
 
     return "True"
 
