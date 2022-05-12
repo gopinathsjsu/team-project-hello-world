@@ -8,10 +8,12 @@ from src.services import userServices
 import json
 from src.db import db
 from src.services import hotelServices
+from flask_cors import cross_origin
 
 hotel = Blueprint("hotel", __name__, url_prefix='/hotel')
 
 @hotel.route("/",methods=["GET","POST"])
+@cross_origin()
 def home_route():
     request.args.get("location", default=None, type=str)
     request.args.get("start", default=None, type=str)

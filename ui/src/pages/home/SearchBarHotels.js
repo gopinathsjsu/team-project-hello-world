@@ -7,11 +7,11 @@ import getLinks from '../../common/helper/links';
 
 export default function SearchBarHotels(props) {
 	let links = getLinks();
-	const [formData, setFormDate] = useState({
-		inputCity: '',
-		startDate: new Date(),
-		endDate: new Date()
-	})
+	// const [formData, setFormDate] = useState({
+	// 	inputCity: '',
+	// 	startDate: new Date(),
+	// 	endDate: new Date()
+	// })
 
 	useEffect(() => {
 		API({
@@ -31,7 +31,7 @@ export default function SearchBarHotels(props) {
 
 	function search(e) {
 		e.preventDefault();
-		let params = { ...formData }
+		let params = { ...props.formData }
 
 		API({
 			callURL: links.hotels,
@@ -61,19 +61,19 @@ export default function SearchBarHotels(props) {
 						className="form-control"
 						id="inputCity"
 						placeholder="Search By City"
-						value={formData.inputCity}
-						onChange={((e) => setFormDate({ ...formData, inputCity: e.target.value }))}
+						value={props.formData.inputCity}
+						onChange={((e) => props.setFormDate({ ...props.formData, inputCity: e.target.value }))}
 					/>
 				</div>
 				<div className="col-md-6">
 					<div className="row date-container">
 						<div className="col-md-3">
 							<label className="form-label">Start Date</label>
-							<DatePicker selected={formData.startDate} onChange={(date) => setFormDate({ ...formData, startDate: date })} />
+							<DatePicker selected={props.formData.startDate} onChange={(date) => props.setFormDate({ ...props.formData, startDate: date })} />
 						</div>
 						<div className="col-md-3">
 							<label className="form-label">End Date</label>
-							<DatePicker selected={formData.endDate} onChange={(date) => setFormDate({ ...formData, endDate: date })} />
+							<DatePicker selected={props.formData.endDate} onChange={(date) => props.setFormDate({ ...props.formData, endDate: date })} />
 						</div>
 					</div>
 				</div>
