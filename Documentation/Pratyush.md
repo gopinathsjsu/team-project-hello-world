@@ -116,7 +116,7 @@ No Blockers
 
    # Next Sprint Todo:
 
-* N/A
+* Work on documentation and few changes in frontend.
 
 # Blocked Tasks 
 No Blockers
