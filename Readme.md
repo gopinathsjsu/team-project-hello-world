@@ -126,7 +126,7 @@ Prithvi : Backend (the booking model), Database design, Front end (UI Wireframes
 
 ## DataBase Design
 
-![Blank diagram](https://user-images.githubusercontent.com/58871002/168188284-1d69de82-e2f0-4c17-b65e-9082f3f60387.png)
+![Blank diagram (1)](https://user-images.githubusercontent.com/58871002/168221284-9c0828ac-c43e-40c0-9fd8-2c4b385d0500.png)
 
 ## Deployment Diagram
 
