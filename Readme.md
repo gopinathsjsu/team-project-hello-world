@@ -95,6 +95,8 @@ Prithvi : Backend (the booking model), Database design, Front end (UI Wireframes
  ## Project Board 
  
  https://github.com/gopinathsjsu/team-project-hello-world/projects?query=is%3Aclosed
+ 
+ https://github.com/gopinathsjsu/team-project-hello-world/issues?q=is%3Aissue+is%3Aclosed
 
 # UI WireFrames
 
