@@ -129,3 +129,5 @@ Prithvi : Backend (the booking model), Database design, Front end (UI Wireframes
 ## Use Case Diagram
 ![Usename Prithvi](https://user-images.githubusercontent.com/58871002/167992670-99014631-0466-479d-982c-df8d9cb393dc.png)
 
+## Class Diagram
+![HW Class Diagram](https://user-images.githubusercontent.com/53856854/168188044-8b2cf918-e008-4db3-941a-c11106324fa6.png)
