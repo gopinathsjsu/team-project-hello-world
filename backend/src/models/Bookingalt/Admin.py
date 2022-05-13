@@ -112,3 +112,106 @@ def booking(data):
     else:    
         data1 = Hotel.query.get_or_404(data)
         return render_template('booking.html',h_data=h_data,data=data1.id)
+@app.route('/hook/', methods=['GET', 'POST'])
+def hook():
+        topic = Hotel.query.all()
+        if request.method == 'POST':
+          booking = Booking(
+            user_id  = session['id'], 
+            hotel_id = request.form['hotel'],
+            room = "Standard",
+            price = "110" 
+            )  
+          try:
+            db.session.add(booking)
+            db.session.commit()
+          except exc.IntegrityError:
+            db.session.rollback()
+            flash('Booking Failed') 
+            return render_template('hotel.html',topic=topic) 
+          return render_template('hotel.html',topic=topic) 
+        else:  
+           return render_template('hotel.html',topic=topic)        
+
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    """Login Form"""
+    if request.method == 'GET':
+        return render_template('login.html')
+    else:
+        name = request.form['username']
+       # email = request.form['email']
+        passw = request.form['password']
+        try:
+           data = User.query.filter_by(username=name, passwordHash=passw).first()
+           #return data.username
+           session['logged_in'] = True
+           session['id']=data.id
+           #return data1
+           topic = Hotel.query.all()
+           return render_template('hotel.html', data=data.id,topic=topic)
+        except:
+            flash('Something Wrong') 
+            return render_template('login.html')
+
+@app.route('/register/', methods=['GET', 'POST'])
+def register():
+    """Register Form"""
+    if request.method == 'POST':
+        new_user = User(
+            username=request.form['username'],
+            passwordHash=request.form['password'],
+            email=request.form['email'],
+            creativeTime=int(time.time())
+            )
+        try:
+            db.session.add(new_user)
+            db.session.commit()
+        except exc.IntegrityError:
+            db.session.rollback()
+            flash('Something Wrong') 
+            return render_template('register.html')  
+        return render_template('login.html')
+    else:    
+        return render_template('register.html')
+
+
+@app.route("/logout")
+def logout():
+    """Logout Form"""
+    session['logged_in'] = False
+    return redirect(url_for('home'))    
+@app.route("/check")
+def check():
+    id1=session["id"]
+    try:
+      data = Booking.query.filter_by(user_id=id1).first()
+      data1 = Hotel.query.filter_by(id=data.hotel_id).first()
+      return  render_template('checking.html',hotels=data1,id=data.id)
+    except :
+        topic = Hotel.query.all()
+        flash('No Bookings') 
+        return render_template('hotel.html',topic=topic) 
+
+@app.route("/delete/<int:data>")    
+def delete(data):
+    try:
+        user_to_delete=Booking.query.filter_by(hotel_id=data).first()
+        db.session.delete(user_to_delete)
+        db.session.commit()
+        topic = Hotel.query.all()
+        flash('Booking Deleted') 
+        return render_template('hotel.html',topic=topic) 
+    except :
+        topic = Hotel.query.all()
+        flash('Something wrong in deletion') 
+        return render_template('hotel.html',topic=topic)
+    
+        
+
+
+if __name__ == '__main__':
+    app.debug = True
+    db.create_all()
+    
+    app.run(host='0.0.0.0')
