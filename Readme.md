@@ -91,6 +91,10 @@ Prithvi : Backend (the booking model), Database design, Front end (UI Wireframes
 - We truly cared of each other's well being and their work.
 - Every teammate has the freedom to propose a new feature, express their point of view and prespectives without the fear of recieving harsh criticism from
   teammates
+  
+ ## Project Board 
+ 
+ https://github.com/gopinathsjsu/team-project-hello-world/projects?query=is%3Aclosed
 
 # UI WireFrames
 
